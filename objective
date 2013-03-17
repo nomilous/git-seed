@@ -1,0 +1,16 @@
+#!/usr/bin/env coffee
+
+GitNez = require('nez').objective 'GitNez',
+
+    nimbal:      'https://localhost:10101/'
+    class:       'Command Line Tool'
+    category:    'Development'
+    description: """
+
+        Simplify the infrastructual overhead
+        of concurrently developing multiple
+        multiple interdependant modules.
+
+    """, (requirement) -> 
+
+        requirement.link 'requirements/cli'

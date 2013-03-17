@@ -1,0 +1,23 @@
+{
+  "name": "git-nez",
+  "description": "git plugin for nez",
+  "version": "0.0.1",
+  "author": "nomilous <nomilous@gmail.com>",
+  "contributors": [
+    {
+      "name": "nomilous",
+      "email": "nomilous@gmail.com"
+    }
+  ],
+  "bin": {
+    "git-nez": "./bin/git-nez"
+  },
+  "repository": "git@github.com:nomilous/git-nez.git",
+  "dependencies": {
+    "commander": "~1.1.1"
+  },
+  "devDependencies": {
+    "should": "~1.2.2",
+    "nez": "0.0.2"
+  }
+}
