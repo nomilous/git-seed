@@ -1,4 +1,4 @@
-GitTools = require './git_tools'
+Git = require './tools/git'
 
 class GitRepo
 
@@ -7,14 +7,16 @@ class GitRepo
         return new GitRepo
 
             path:   workDir
-            origin: GitTools.showOrigin workDir
-            branch: GitTools.showBranch workDir
-            ref:    GitTools.showRef workDir
+            origin: Git.showOrigin workDir
+            branch: Git.showBranch workDir
+            ref:    Git.showRef workDir
 
 
     constructor: (properties) ->
 
-        console.log '\ninit GitRepo @ \n', properties
+        for property of properties
+
+            @[property] = properties[property]
 
 
 module.exports = GitRepo

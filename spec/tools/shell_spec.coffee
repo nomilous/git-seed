@@ -1,4 +1,4 @@
-require('nez').realize 'GitRepos', (GitRepos, test, context) -> 
+require('nez').realize 'Shell', (Shell, test, context) -> 
 
     context 'in CONTEXT', (does) ->
 

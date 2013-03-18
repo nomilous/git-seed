@@ -1,4 +1,5 @@
-GitRepos = require './git_repos'
+colors  = require 'colors'
+GitTree = require './git_tree'
 
 module.exports = GitAction =
 
@@ -28,7 +29,8 @@ module.exports = GitAction =
 
         find.on 'end', ->
 
-            GitRepos.init array, GitAction.root
+            tree = GitTree.init array, GitAction.root
+            tree.save()
 
         find.on 'directory', (dir, stat) -> 
 
@@ -36,6 +38,7 @@ module.exports = GitAction =
 
                 return unless typeof list[match[1]] == 'undefined'
 
+                console.log '(found)'.green, "#{match[1]}/.git"
                 list[match[1]] = 1
                 array.push match[1]
 
