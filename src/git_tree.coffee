@@ -8,9 +8,11 @@ class GitTree
 
         repoArray = []
 
+        seq = 0
+
         for path in array
 
-            repoArray.push GitRepo.init path
+            repoArray.push GitRepo.init path, seq++
 
         return new GitTree root, repoArray
 
