@@ -4,7 +4,7 @@ GitRepo = require './git_repo'
 
 class GitTree
 
-    @init: (array, root) -> 
+    @init: (root, array) -> 
 
         repoArray = []
 
@@ -17,9 +17,16 @@ class GitTree
 
     constructor: (@root, list) -> 
 
+        @control = "#{@root}/.git_tree"
+
         if list instanceof Array
 
             @array = list
+
+        else if typeof list == 'undefined'
+
+            @array = @load()
+
 
     save: -> 
 
@@ -32,6 +39,44 @@ class GitTree
 
             console.log error.red
             throw error
+
+
+    load: -> 
+
+        try 
+
+            @noControl() unless fs.lstatSync(  @control  ).isFile()
+
+        catch error
+
+            @noControl error
+
+        try
+
+            json = JSON.parse fs.readFileSync @control
+
+            array = []
+
+            for properties in json
+
+                array.push new GitRepo properties
+
+            return array
+
+        catch error
+
+            @noControl error
+
+
+    noControl: (ex) ->
+
+        throw error = ex || new Error( 
+
+            'Expected control file, not this:' + @control
+
+        )
+
+        
 
 
 module.exports = GitTree

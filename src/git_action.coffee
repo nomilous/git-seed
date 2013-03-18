@@ -25,13 +25,13 @@ module.exports = GitAction =
         GitAction.error = ''
 
         list  = {}
-        array = []
+        arrayOfGitWorkdirs = []
 
         find = require('findit').find GitAction.root 
 
         find.on 'end', ->
 
-            tree = GitTree.init array, GitAction.root
+            tree = GitTree.init GitAction.root, arrayOfGitWorkdirs
             tree.save()
 
         find.on 'directory', (dir, stat) -> 
@@ -42,12 +42,18 @@ module.exports = GitAction =
 
                 console.log '(found)'.green, "#{match[1]}/.git"
                 list[match[1]] = 1
-                array.push match[1]
+                arrayOfGitWorkdirs.push match[1]
 
 
-    status: -> 
+    status: ->
+
+        console.log '(status)'.bold, 'for all git repositories in', GitAction.root
 
         GitAction.error = ''
+
+        tree = new GitTree GitAction.root
+
+        console.log tree
         
 
     commit: -> 

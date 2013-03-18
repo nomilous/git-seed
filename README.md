@@ -20,8 +20,10 @@ git nez -h
 
 #### Step 1 - init
 
-* This recurses for nested git repos starting at `.` or `--root /home/me/git/faraway_tree` and generates a control file `./git_tree` containing details of the found repos.
-* The `./git_tree` should be committed. It enables others in the team to generate an identical tree of cloned repositories.
+* This recurses for nested git repos starting at `.` or `--root /home/me/git/faraway_tree`.
+* It generates a control file `./git_tree` containing details of the found repos.
+* The `./git_tree` should be committed. 
+* It enables **others** in the team to generate **an identical tree** of cloned repos.
 
 
 ```bash
@@ -42,8 +44,9 @@ git nez -h
 
 #### Step 2 - status 
 
-* This step is being performed at another workstation, it only has the root repo checked out.
-* It uses the `./git_tree` control files to report on the status across all nested repositories
+* This step is being performed **at another workstation** 
+* Only the root repo checked out there.
+* It uses the `./git_tree` control file to report on the status across all nested repositories
 
 ```bash
 
