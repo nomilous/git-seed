@@ -37,6 +37,8 @@ class GitTree
             fs.writeFileSync "#{@root}/.git_tree", 
                 JSON.stringify( @array, null, 2 )
 
+            console.log '(write)'.green, "#{@root}/.git_tree"
+
         catch error
 
             console.log error.red

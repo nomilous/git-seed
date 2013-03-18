@@ -64,7 +64,20 @@ module.exports = git =
 
     showStatus: (workDir) -> 
 
-        console.log workDir
+        gitDir = git.gitDir workDir
+
+        try
+
+            return Shell.execSync( 
+
+                "git --git-dir=#{gitDir} --work-tree=#{workDir} status"
+
+            )
+
+        catch error
+
+            console.log error.red
+            throw error
 
 
     gitDir: (workDir) -> 

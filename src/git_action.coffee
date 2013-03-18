@@ -20,7 +20,7 @@ module.exports = GitAction =
 
     init: -> 
 
-        console.log '(init)'.bold, 'scanning for git repositories in', GitAction.root
+        console.log '(init)'.bold, 'scanning for git repositories in', GitAction.root, '\n'
 
         GitAction.error = ''
 
@@ -47,7 +47,7 @@ module.exports = GitAction =
 
     status: ->
 
-        console.log '(status)'.bold, 'for all expected repositories in', GitAction.root
+        console.log '(status)'.bold, 'for all expected repositories in', GitAction.root, '\n'
 
         GitAction.error = ''
 

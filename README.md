@@ -29,8 +29,8 @@ git nez -h
 ```bash
 
 > git nez init
-
 (init) scanning for git repositories in .
+
 (found) ./.git
 (found) ./node/node_modules/brix/.git
 (found) ./node/node_modules/brix/node_modules/trix/.git
@@ -38,7 +38,13 @@ git nez -h
 (found) ./root/node_modules/elix/.git
 (run) git --git-dir=./.git config --get remote.origin.url
 (run) cat ./.git/HEAD
+
 ...etc
+
+(run) cat ./root/node_modules/elix/.git/HEAD
+(run) cat ./root/node_modules/elix/.git/refs/heads/develop
+(write) ./.git_tree
+> 
 
 ```
 
@@ -51,9 +57,45 @@ git nez -h
 ```bash
 
 > git nez status
-(status) for all expected repositories in .
+(status) for all expected repositories in . 
+
+STATUS @ .
+(status) for all expected repositories in . 
+
+STATUS @ .
+(run) git --git-dir=./.git --work-tree=. status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#
+nothing to commit (working directory clean)
+
 MISSING repo @ ./node/node_modules/brix
+
 MISSING repo @ ./node/node_modules/brix/node_modules/trix
+
+STATUS @ ./node_modules/nez
+(run) git --git-dir=./node_modules/nez/.git --work-tree=./node_modules/nez status
+# On branch develop
+nothing to commit (working directory clean)
+
 MISSING repo @ ./root/node_modules/elix
+
+>
+
+
+### Step 3 - clone
+
+* This clones all the missing repositories.
+* It also checkouts the branches as specified in the `./git_tree` control file
+
+```bash
+
+> git nez clone
+
+...pending
+
+
+```
+
 
 ```

@@ -36,8 +36,15 @@ class GitRepo
 
         unless Shell.gotDirectory @path + '/.git'
 
-            console.log "MISSING repo @ #{@path}".red
+            console.log "MISSING repo @ #{@path}\n".red
             return
+
+        
+        
+        console.log "STATUS @ #{@path}".green.bold
+        status = Git.showStatus @path
+        console.log status + '\n'
+
 
         
 
