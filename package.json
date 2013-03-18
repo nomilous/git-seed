@@ -14,7 +14,8 @@
   },
   "repository": "git@github.com:nomilous/git-nez.git",
   "dependencies": {
-    "commander": "~1.1.1"
+    "commander": "~1.1.1",
+    "findit": "~0.1.2"
   },
   "devDependencies": {
     "should": "~1.2.2",
