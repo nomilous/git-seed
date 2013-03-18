@@ -70,6 +70,13 @@ class GitTree
             @noControl error
 
 
+    status: -> 
+
+        for repo in @array
+
+            repo.printStatus()
+
+
     noControl: (ex) ->
 
         throw error = ex || new Error( 

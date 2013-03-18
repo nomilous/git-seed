@@ -45,13 +45,15 @@ git nez -h
 #### Step 2 - status 
 
 * This step is being performed **at another workstation** 
-* Only the root repo checked out there.
-* It uses the `./git_tree` control file to report on the status across all nested repositories
+* Only the root repo has been checked out there.
+* It uses the `./git_tree` control file to report on the status across all nested repositories that should be and/or are present.
 
 ```bash
 
 > git nez status
-
-...pending
+(status) for all expected repositories in .
+MISSING repo @ ./node/node_modules/brix
+MISSING repo @ ./node/node_modules/brix/node_modules/trix
+MISSING repo @ ./root/node_modules/elix
 
 ```

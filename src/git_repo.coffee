@@ -1,4 +1,5 @@
-Git = require './tools/git'
+Git   = require './tools/git'
+Shell = require './tools/shell'
 
 class GitRepo
 
@@ -13,7 +14,6 @@ class GitRepo
             ref:    Git.showRef workDir
 
 
-
     constructor: (properties) ->
 
         for property of properties
@@ -23,13 +23,23 @@ class GitRepo
             if property == 'ref' and @root
 
                 #
-                # root repo as special ref
+                # root repo has special ref
                 # 
-                # - no need to carry the root repo
+                # - no need to carry the root repo ref
                 # - catch22 on root commit if we do
                 # 
 
                 @[property] = 'ROOT_REPO_REF'
+
+
+    printStatus: -> 
+
+        unless Shell.gotDirectory @path + '/.git'
+
+            console.log "MISSING repo @ #{@path}".red
+            return
+
+        
 
 
 module.exports = GitRepo

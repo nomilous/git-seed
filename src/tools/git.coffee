@@ -62,6 +62,11 @@ module.exports = git =
             throw error
 
 
+    showStatus: (workDir) -> 
+
+        console.log workDir
+
+
     gitDir: (workDir) -> 
 
         workDir + '/.git'

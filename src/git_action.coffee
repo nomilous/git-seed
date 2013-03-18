@@ -47,14 +47,11 @@ module.exports = GitAction =
 
     status: ->
 
-        console.log '(status)'.bold, 'for all git repositories in', GitAction.root
+        console.log '(status)'.bold, 'for all expected repositories in', GitAction.root
 
         GitAction.error = ''
 
-        tree = new GitTree GitAction.root
-
-        console.log tree
-        
+        (new GitTree GitAction.root).status()
 
     commit: -> 
 
