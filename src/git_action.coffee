@@ -20,6 +20,8 @@ module.exports = GitAction =
 
     init: -> 
 
+        console.log '(init)'.bold, 'scanning for git repositories in', GitAction.root
+
         GitAction.error = ''
 
         list  = {}
