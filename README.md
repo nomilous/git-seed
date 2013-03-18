@@ -60,9 +60,6 @@ git nez -h
 (status) for all expected repositories in . 
 
 STATUS @ .
-(status) for all expected repositories in . 
-
-STATUS @ .
 (run) git --git-dir=./.git --work-tree=. status
 # On branch master
 # Your branch is ahead of 'origin/master' by 1 commit.
@@ -81,6 +78,8 @@ nothing to commit (working directory clean)
 MISSING repo @ ./root/node_modules/elix
 
 >
+
+```
 
 
 ### Step 3 - clone
