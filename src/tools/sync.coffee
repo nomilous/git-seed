@@ -1,6 +1,6 @@
 module.exports = sync = 
 
-    series: (functionName, targetsArray) ->
+    series: (targetsArray, functionName, args, callback) ->
 
         #
         # Where each in targetsArray implements functionName 

@@ -51,10 +51,7 @@ class GitRepo
         console.log status + '\n'
 
 
-    test: (callback) -> 
-
-        command = 'sleep'
-        opts = [5]
+    testSpawn: (command, opts, callback) -> 
 
         console.log 'calling test sleep on repo %s', @path
 
