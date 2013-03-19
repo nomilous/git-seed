@@ -1,14 +1,24 @@
 module.exports = sync = 
 
-    series: (targetsArray, functionName, args, endCallback) ->
+    series: (targetsArray, functionName, args, finalCallback, stepCallback) ->
 
         #
         # Where each in targetsArray implements functionName 
         # that accepts an (err, result) callback
         # 
+        # Each callback from the targets will accumulate 
+        # into a results array which is sent to the finalCallback
+        # 
+        # If any of the targets callback an error, the series
+        # will terminate and the error will be sent to the
+        # finalCallback along with the partial results array.
+        #  
+        # If defined, stepCallback will be called with each
+        # individual result as it ocurrs.
+        # 
 
         #
-        # shallow clone original target array, 
+        # shallow clone targetsArray, 
         # so's not to shift() the original
         # 
 
@@ -26,23 +36,36 @@ module.exports = sync =
         # make this callback....
         #
 
+        results = []
+
         args.push (err, result) -> 
 
             #
-            # ....which then recurses back
+            # ....which accumulates results and then recurses back
+            #     or goes to finalCallback on error
             #
 
-            sync.recurse targets, functionName, args, endCallback
+            results.push result
+
+            if err
+
+                finalCallback err, results
+
+            if typeof stepCallback == 'function'
+
+                stepCallback err, result
+
+            sync.recurse results, targets, functionName, args, finalCallback
 
 
         #
         # start the recursion
         #
 
-        sync.recurse targets, functionName, args, endCallback
+        sync.recurse results, targets, functionName, args, finalCallback
 
 
-    recurse: (targets, fname, args, ecb) -> 
+    recurse: (results, targets, fname, args, finalCallback) -> 
 
         #
         # shift next from targets 
@@ -51,7 +74,11 @@ module.exports = sync =
         #
 
         target = targets.shift() 
-        return unless target
+        unless target
+
+            finalCallback null, results
+            return
+
 
         target[fname].apply target, args
 

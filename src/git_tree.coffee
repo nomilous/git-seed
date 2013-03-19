@@ -81,12 +81,23 @@ class GitTree
 
     clone: -> 
 
-        actionOn @array, 'testSpawn', ['sleep' , [1]], (error, result) -> 
+        actionOn @array, 'testSpawn', ['sleep' , [1]], 
 
-            console.log 'FINAL CALLBACK:\n'
+            (error, result) -> 
 
-                error: error
-                result: result
+                console.log 'FINAL CALLBACK:\n'
+
+                    error: error
+                    result: result
+
+            (error, result) -> 
+
+                console.log 'STEP CALLBACK:\n'
+
+                    error: error
+                    result: result
+
+
 
 
     noControl: (ex) ->

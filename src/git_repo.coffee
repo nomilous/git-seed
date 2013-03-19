@@ -2,6 +2,8 @@ Git   = require './tools/git'
 Shell = require './tools/shell'
 spawn = require('child_process').spawn
 
+seq = 0
+
 class GitRepo
 
     @init: (workDir, seq) -> 
@@ -53,7 +55,7 @@ class GitRepo
 
     testSpawn: (command, opts, callback) -> 
 
-        console.log 'spawning shell command "%s %s" in repo %s', command, opts.toString(), @path
+        console.log 'spawning shell command "%s %s" in %s', command, opts.toString(), @path
 
         child = spawn command, opts
 
@@ -68,7 +70,7 @@ class GitRepo
 
             else 
 
-                callback null, 'ok'
+                callback null, 'ok' + seq++
 
 
     clone: (callback) ->
