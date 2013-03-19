@@ -53,7 +53,7 @@ class GitRepo
 
     testSpawn: (command, opts, callback) -> 
 
-        console.log 'calling test sleep on repo %s', @path
+        console.log 'spawning shell command "%s %s" in repo %s', command, opts.toString(), @path
 
         child = spawn command, opts
 

@@ -1,7 +1,7 @@
-fs      = require 'fs'
-colors  = require 'colors'  
-GitRepo = require './git_repo'
-action  = require('./tools/sync').series
+fs       = require 'fs'
+colors   = require 'colors'  
+GitRepo  = require './git_repo'
+actionOn = require('./tools/sync').series
 
 class GitTree
 
@@ -81,7 +81,7 @@ class GitTree
 
     clone: -> 
 
-        actionOn @array, 'testSpawn', ['sleep' , [5]], (error, result) -> 
+        actionOn @array, 'testSpawn', ['sleep' , [1]], (error, result) -> 
 
             console.log 'FINAL CALLBACK:\n'
 
