@@ -1,5 +1,6 @@
-Shell  = require './shell'
-colors = require 'colors'
+Shell     = require './shell'
+colors    = require 'colors'
+waterfall = require('async').waterfall
 
 module.exports = git = 
 
@@ -85,6 +86,10 @@ module.exports = git =
         workDir + '/.git'
 
 
-    clone: (workDir, origin) -> 
+    clone: (workDir, origin, branch, callback) -> 
 
-        console.log 'clone %s into %s', origin, workDir
+        error = null
+
+        console.log 'clone %s into %s and checkout %s', origin, workDir, branch
+
+

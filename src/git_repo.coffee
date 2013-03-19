@@ -1,5 +1,6 @@
 Git   = require './tools/git'
 Shell = require './tools/shell'
+spawn = require('child_process').spawn
 
 class GitRepo
 
@@ -50,21 +51,41 @@ class GitRepo
         console.log status + '\n'
 
 
-    clone: ->
+    test: (callback) -> 
+
+        command = 'sleep'
+        opts = [5]
+
+        console.log 'calling test sleep on repo %s', @path
+
+        child = spawn command, opts
+
+        child.stdout.pipe process.stdout
+        child.stderr.pipe process.stderr
+
+        child.on 'close', (code, signal) ->
+
+            if code > 0
+
+                callback new Error command + opts.join(' ') + ' exited with errorcode: ' + code
+
+            else 
+
+                callback null, 'ok'
+
+
+    clone: (callback) ->
+
+        error = null
 
         if Shell.gotDirectory @path + '/.git'
 
             console.log '(skip)'.bold, "clone @ #{@path}"
+            callback error
             
         else
 
-            Git.clone @path, @origin
-
-
-        @checkout()
-
-
-
+            Git.clone @path, @origin, @branch, callback
 
 
 

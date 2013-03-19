@@ -1,6 +1,7 @@
 fs      = require 'fs'
 colors  = require 'colors'  
 GitRepo = require './git_repo'
+action  = require('./tools/sync').series
 
 class GitTree
 
@@ -80,16 +81,7 @@ class GitTree
 
     clone: -> 
 
-        for repo in @array
-
-            try
-            
-                repo.clone()
-
-            catch error
-
-                console.log error.red
-                throw error
+        action 'test', @array
 
 
     noControl: (ex) ->
@@ -100,7 +92,6 @@ class GitTree
 
         )
 
-        
 
 
 module.exports = GitTree
