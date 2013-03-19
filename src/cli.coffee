@@ -16,6 +16,11 @@ program
     .description('Git status across all nested git repos')
     .action -> GitAction.assign(program).status arguments
 
+program
+    .command('clone')
+    .description('Git clone all missing nested git repos')
+    .action -> GitAction.assign(program).clone arguments
+
 program 
     .command('commit')
     .description('Git commit across all nested repos with staged changes.')

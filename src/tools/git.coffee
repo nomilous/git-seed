@@ -83,3 +83,8 @@ module.exports = git =
     gitDir: (workDir) -> 
 
         workDir + '/.git'
+
+
+    clone: (workDir, origin) -> 
+
+        console.log 'clone %s into %s', origin, workDir

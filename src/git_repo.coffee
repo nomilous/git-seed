@@ -32,18 +32,50 @@ class GitRepo
                 @[property] = 'ROOT_REPO_REF'
 
 
+    printMissing: -> 
+
+        console.log "MISSING repo @ #{@path}\n".red
+        false
+
     printStatus: -> 
 
         unless Shell.gotDirectory @path + '/.git'
-
-            console.log "MISSING repo @ #{@path}\n".red
-            return
+            
+            return @printMissing()
 
         
         
         console.log "STATUS @ #{@path}".green.bold
         status = Git.showStatus @path
         console.log status + '\n'
+
+
+    clone: ->
+
+        if Shell.gotDirectory @path + '/.git'
+
+            console.log '(skip)'.bold, "clone @ #{@path}"
+            
+        else
+
+            Git.clone @path, @origin
+
+
+        @checkout()
+
+
+
+
+
+
+    checkout: ->
+
+        unless Shell.gotDirectory @path + '/.git'
+
+            return @printMissing()
+
+
+
 
 
         

@@ -78,6 +78,19 @@ class GitTree
 
             repo.printStatus()
 
+    clone: -> 
+
+        for repo in @array
+
+            try
+            
+                repo.clone()
+
+            catch error
+
+                console.log error.red
+                throw error
+
 
     noControl: (ex) ->
 

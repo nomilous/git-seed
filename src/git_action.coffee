@@ -53,6 +53,16 @@ module.exports = GitAction =
 
         (new GitTree GitAction.root).status()
 
+
+    clone: ->
+
+        console.log '(clone)'.bold, 'all missing repositories in', GitAction.root, '\n'
+
+        GitAction.error = ''
+
+        (new GitTree GitAction.root).clone()
+
+
     commit: -> 
 
         GitAction.error = ''
