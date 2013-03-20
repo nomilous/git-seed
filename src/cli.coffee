@@ -28,12 +28,17 @@ program
 
 program
     .command('pull')
-    .description('Git pull across all nested git repos not up-to-date with .nez_tree')
+    .description('[PENDING] Git pull across all nested git repos not up-to-date with .nez_tree')
     .action -> GitAction.assign(program).pull arguments
 
 program
     .command('push')
-    .description('Git push across all nested git repos pending commits and update .nez_tree')
+    .description('[PENDING] Git push across all nested git repos pending commits and update .nez_tree')
+    .action -> GitAction.assign(program).push arguments
+
+program
+    .command('watch')
+    .description('[PENDING (maybe)] Attach console to github rss feeds for all nested repos')
     .action -> GitAction.assign(program).push arguments
 
 
