@@ -1,7 +1,16 @@
 git-nez
 =======
 
-git plugin for nez
+A simple alternative to git submodules and npm linking. 
+
+### Current version 
+
+0.0.2
+
+### Pending functionality
+
+* push across all nested repos with commits pending
+* pull across all repos
 
 ### Install
 
@@ -10,15 +19,16 @@ sudo npm install git-nez -g
 ```
 
 
-### Usage
+Usage
+-----
 
-#### Step 0 
+### Step 0 
 
 ```bash
 git nez -h
 ```
 
-#### Step 1 - init
+### Step 1 - init
 
 * This recurses for nested git repos starting at `.` or `--root /home/me/git/faraway_tree`.
 * It generates a control file `.nez_tree` containing details of the found repos.
@@ -48,7 +58,7 @@ git nez -h
 
 ```
 
-#### Step 2 - status 
+### Step 2 - status 
 
 * This step is being performed **at another workstation** 
 * Only the root repo has been checked out there.
@@ -126,7 +136,7 @@ Switched to a new branch 'develop'
 >
 ```
 
-### **Important point** 
+#### **Important point** 
 
 * The `.nez_tree` control file specifies the branch that each repo should be on.
 * Running a clone will checkout that branch
@@ -171,7 +181,7 @@ Switched to branch 'feature/test'
 ```
 
 
-### **Important point** 
+#### **Important point** 
 
 * It may be that one of your repos has forgetccidentally been left checkedout on the wrong branch (according to the `.nez_tree` control file)
 * The commit run **will report this case of affairs and take no further action** for that repo.  

@@ -49,6 +49,8 @@ module.exports = GitAction =
 
         console.log '(status)'.bold, 'for all expected repositories in', GitAction.root, '\n'
 
+        GitAction.error = ''
+        
         try
 
             (new GitTree GitAction.root).status()
