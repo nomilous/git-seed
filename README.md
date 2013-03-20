@@ -126,4 +126,40 @@ Switched to a new branch 'develop'
 >
 ```
 
+### **Important point** 
+
+* The `./git_tree` control file specifies the branch that each repo should be on.
+* Running a clone will checkout that branch
+
+```bash
+
+> cd ./node/node_modules/brix/node_modules/trix
+> git checkout master
+> cd -
+> git nez clone
+(clone) all missing repositories in . 
+
+(skip) already cloned .
+(skip) already cloned ./node/node_modules/brix
+(skip) already cloned ./node/node_modules/brix/node_modules/trix
+(run) git --git-dir=./node/node_modules/brix/node_modules/trix/.git --work-tree=./node/node_modules/brix/node_modules/trix checkout feature/test
+Switched to branch 'feature/test'
+(skip) already cloned ./node_modules/nez
+(skip) already cloned ./root/node_modules/elix
+
+```
+
+### Step 4 - commit
+
+* **First** it should be pointed out that this commit will enact a commit across *all* repos that have pending files **staged** (ie. files that were `git add <file>`ed)
+* This global commit may therefore not be ideal because it commits with common log message for all.
+* **It is suggested that in most cases commits should be done manually in each repo**
+
+```bash
+
+> git nez commit -m 'commit log message'
+
+panding
+
+```
 
