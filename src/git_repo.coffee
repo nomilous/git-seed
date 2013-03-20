@@ -54,6 +54,11 @@ class GitRepo
     clone: (callback) ->
 
         Git.clone @path, @origin, @branch, callback
+
+
+    commit: (message, callback) -> 
+
+        Git.commit @path, @branch, message, callback
         
 
 

@@ -65,8 +65,11 @@ module.exports = GitAction =
 
     commit: -> 
 
+        console.log '(commit)'.bold, 'on all repositories', 'with staged changes'.bold, 'in', GitAction.root, '\n'
+
         GitAction.error = ''
-        console.log 'commit with', GitAction.message
+
+        (new GitTree GitAction.root).commit GitAction.message
 
 
     push: -> 

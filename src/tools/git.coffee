@@ -86,6 +86,19 @@ module.exports = git =
         workDir + '/.git'
 
 
+    showStagedDiffs: (workDir) -> 
+
+        return Shell.execSync(
+
+                "git --git-dir=#{workDir}/.git --work-tree=#{workDir} diff --cached", false
+
+        )
+
+    hasStagedChanges: (workDir) -> 
+
+        0 != git.showStagedDiffs( workDir ).length
+
+
     clone: (workDir, origin, branch, finalCallback) -> 
 
         waterfall [
@@ -137,4 +150,36 @@ module.exports = git =
         ], finalCallback
 
 
+    commit: (workDir, branch, message, finalCallback) ->
+
+
+        waterfall [
+
+            (callback) -> 
+
+                if Shell.gotDirectory workDir
+
+                    callback null
+
+                else
+
+                    callback new Error 'missing repo ' + workDir
+
+            (callback) -> 
+
+
+                if git.hasStagedChanges workDir
+
+                    console.log 'got staged changes in', workDir
+                    callback null
+
+                else
+
+                    console.log '(skip)'.green, 'no staged changes in', workDir
+                    callback null
+
+
+
+
+        ], finalCallback
 

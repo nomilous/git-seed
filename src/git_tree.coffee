@@ -87,6 +87,14 @@ class GitTree
 
                 throw error if error 
 
+    commit: (message) ->
+
+        actionOn @array, 'commit', [message], 
+
+            (error, result) -> 
+
+                throw error if error
+
 
     noControl: (ex) ->
 
