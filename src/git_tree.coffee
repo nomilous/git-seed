@@ -80,21 +80,15 @@ class GitTree
 
             repo.printStatus()
 
-    clone: -> 
 
-        actionOn @array, 'clone', null, 
+    clone: (callback) -> 
 
-            (error, result) -> 
+        actionOn @array, 'clone', null, callback
 
-                throw error if error 
 
-    commit: (message) ->
+    commit: (message, callback) ->
 
-        actionOn @array, 'commit', [message], 
-
-            (error, result) -> 
-
-                throw error if error
+        actionOn @array, 'commit', [message], callback
 
 
     noControl: (ex) ->

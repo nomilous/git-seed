@@ -50,7 +50,7 @@ module.exports = GitAction =
         console.log '(status)'.bold, 'for all expected repositories in', GitAction.root, '\n'
 
         GitAction.error = ''
-        
+
         try
 
             (new GitTree GitAction.root).status()
@@ -67,7 +67,14 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitTree GitAction.root).clone()
+        (new GitTree GitAction.root).clone (error, result) ->
+
+            if error
+
+                console.log '(error) '.red + error.toString()
+                process.exit 4
+
+            process.exit 0
 
 
     commit: -> 
@@ -76,7 +83,15 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitTree GitAction.root).commit GitAction.message
+        (new GitTree GitAction.root).commit GitAction.message, (error, result) ->
+
+            if error
+
+                console.log '(error) '.red + error.toString()
+                process.exit 5
+
+            process.exit 0
+
 
 
     push: -> 
