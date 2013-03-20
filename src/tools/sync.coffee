@@ -4,7 +4,8 @@ module.exports = sync =
 
         #
         # Where each in targetsArray implements functionName 
-        # that accepts an (err, result) callback
+        # that accepts an (err, result) callback in addition
+        # to the provided args.
         # 
         # Each callback from the targets will accumulate 
         # into a results array which is sent to the finalCallback
@@ -23,6 +24,7 @@ module.exports = sync =
         # 
 
         targets = []
+        results = []
 
         for target in targetsArray
 
@@ -36,24 +38,23 @@ module.exports = sync =
         # make this callback....
         #
 
-        results = []
-
-        args.push (err, result) -> 
+        args.push (error, result) -> 
 
             #
             # ....which accumulates results and then recurses back
             #     or goes to finalCallback on error
             #
 
-            results.push result
-
-            if err
-
-                finalCallback err, results
-
             if typeof stepCallback == 'function'
 
-                stepCallback err, result
+                stepCallback error, result
+
+            if error
+
+                finalCallback error, results
+                return
+
+            results.push result
 
             sync.recurse results, targets, functionName, args, finalCallback
 

@@ -70,6 +70,11 @@ class GitRepo
 
             else 
 
+                if seq > 1
+
+                    callback new Error 'broken' 
+                    return
+
                 callback null, 'ok' + seq++
 
 
