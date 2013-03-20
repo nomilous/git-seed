@@ -27,7 +27,7 @@ module.exports = shell =
             throw error
 
 
-    execSync: (command, log = true) ->
+    execSync: (command, log = false) ->
 
         if log then console.log '(run)'.bold, command
         exec command
