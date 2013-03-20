@@ -165,7 +165,7 @@ Switched to branch 'feature/test'
 (skip) no staged changes in ./node/node_modules/brix/node_modules/trix
 (skip) no staged changes in ./node_modules/nez
 (run) git --git-dir=./root/node_modules/elix/.git --work-tree=./root/node_modules/elix commit -m shared commit log message
-[develop 6e35bfe] test log message
+[develop 6e35bfe] shared commit log message
  1 file changed, 2 deletions(-)
 
 ```
