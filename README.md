@@ -90,10 +90,40 @@ MISSING repo @ ./root/node_modules/elix
 ```bash
 
 > git nez clone
+(clone) all missing repositories in . 
 
-...pending
+(skip) already cloned .
+(run) mkdir -p ./node/node_modules/brix
+(run) git clone git@github.com:nomilous/brix.git ./node/node_modules/brix
+Cloning into './node/node_modules/brix'...
+(run) mkdir -p ./node/node_modules/brix/node_modules/trix
+(run) git clone git@github.com:nomilous/trix.git ./node/node_modules/brix/node_modules/trix
+Cloning into './node/node_modules/brix/node_modules/trix'...
+(run) git --git-dir=./node/node_modules/brix/node_modules/trix/.git --work-tree=./node/node_modules/brix/node_modules/trix checkout feature/test
+Switched to a new branch 'feature/test'
+Branch feature/test set up to track remote branch feature/test from origin.
+(skip) already cloned ./node_modules/nez
+(run) mkdir -p ./root/node_modules/elix
+(run) git clone git@github.com:nomilous/elix.git ./root/node_modules/elix
+Cloning into './root/node_modules/elix'...
+(run) git --git-dir=./root/node_modules/elix/.git --work-tree=./root/node_modules/elix checkout develop
+Branch develop set up to track remote branch develop from origin.
+Switched to a new branch 'develop'
 
+#
+# doing it again has the expected result
+#
 
+> git nez clone
+(clone) all missing repositories in . 
 
+(skip) already cloned .
+(skip) already cloned ./node/node_modules/brix
+(skip) already cloned ./node/node_modules/brix/node_modules/trix
+(skip) already cloned ./node_modules/nez
+(skip) already cloned ./root/node_modules/elix
 
+>
 ```
+
+

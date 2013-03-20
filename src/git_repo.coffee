@@ -56,12 +56,13 @@ class GitRepo
         Git.clone @path, @origin, @branch, callback
 
 
-
-    checkout: ->
+    checkout: (callback) ->
 
         unless Shell.gotDirectory @path + '/.git'
 
             return @printMissing()
+            #callback null
+            #return
 
 
 

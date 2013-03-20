@@ -30,7 +30,7 @@ module.exports = git =
 
             return Shell.execSync(
 
-                "cat #{gitDir}/HEAD"
+                "cat #{gitDir}/HEAD", false
 
             ).match(
 
@@ -88,12 +88,6 @@ module.exports = git =
 
     clone: (workDir, origin, branch, finalCallback) -> 
 
-        console.log 'clone %s into %s and checkout %s', origin, workDir, branch
-
-        #
-        # TODO: test that the clone is acutally necessary
-        #
-
         waterfall [
 
             #
@@ -102,15 +96,43 @@ module.exports = git =
 
             (callback) -> 
 
-                Shell.spawn 'sleep', [0], (error, result) ->
+                if Shell.gotDirectory workDir
 
-                    callback error, result
+                    callback null
 
-            (arg, callback) -> 
+                else
 
-                Shell.spawn 'sleep', [1], (error, result) ->
+                    Shell.spawn 'mkdir', ['-p', workDir], callback
 
-                    callback error, result
+            (callback) -> 
+
+                if Shell.gotDirectory "#{workDir}/.git"
+
+                    console.log '(skip)'.green, 'already cloned', workDir
+                    callback null
+
+                else
+
+                    Shell.spawn 'git', ['clone', origin, workDir], callback
+
+
+            (callback) -> 
+
+                if git.showBranch( workDir ) == branch
+
+                    callback null
+
+                else 
+
+                    Shell.spawn 'git', [
+
+                        "--git-dir=#{workDir}/.git" # concerned about spaces in names
+                        "--work-tree=#{workDir}"
+                        'checkout',
+                        branch.replace 'refs/heads/', ''
+
+                    ], callback
+
 
         ], finalCallback
 

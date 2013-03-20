@@ -85,11 +85,7 @@ class GitTree
 
             (error, result) -> 
 
-                console.log 'FINAL CALLBACK:\n'
-
-                    error: error
-                    result: result
-
+                throw error if error 
 
 
     noControl: (ex) ->
