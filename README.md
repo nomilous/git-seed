@@ -152,7 +152,7 @@ Switched to branch 'feature/test'
 ### Step 4 - commit
 
 * **First** it should be pointed out that this commit will enact a commit across **all** repos that have pending files **staged** (ie. files that were `git add <file>`ed)
-* This global commit may therefore not be ideal because it commits with common log message for all.
+* This global commit may therefore not be ideal because it commits with a common log message for all.
 * **It is suggested that in most cases commits should be done manually in each repo**
 
 ```bash
