@@ -63,7 +63,7 @@ module.exports = git =
             throw error
 
 
-    showStatus: (workDir) -> 
+    showStatus: (workDir, log) -> 
 
         gitDir = git.gitDir workDir
 
@@ -71,7 +71,7 @@ module.exports = git =
 
             return Shell.execSync( 
 
-                "git --git-dir=#{gitDir} --work-tree=#{workDir} status"
+                "git --git-dir=#{gitDir} --work-tree=#{workDir} status", log
 
             )
 

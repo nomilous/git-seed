@@ -34,7 +34,7 @@ class GitRepo
 
     printMissing: -> 
 
-        console.log "MISSING repo @ #{@path}\n".red
+        console.log "(MISSING) repo: #{@path}".red
         false
 
 
@@ -44,11 +44,30 @@ class GitRepo
             
             return @printMissing()
 
-        
-        
-        console.log "STATUS @ #{@path}".green.bold
-        status = Git.showStatus @path
-        console.log status + '\n'
+        status = Git.showStatus @path, false
+
+        #
+        # lazy moment (revist this properly)
+        #
+
+        show = true
+
+        if status.match /nothing to commit \(working directory clean\)/
+
+            show = false
+
+        if status.match /Your branch is ahead/
+
+            show = true
+
+        if show
+
+            console.log '\n(change)'.green, @path.bold
+            console.log status + '\n'
+
+        else
+
+            console.log '(skip)'.green, "no change at #{@path}"
 
 
     clone: (callback) ->
