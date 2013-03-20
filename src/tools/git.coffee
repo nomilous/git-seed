@@ -157,16 +157,43 @@ module.exports = git =
 
             (callback) -> 
 
+                skip = false
+
                 if Shell.gotDirectory workDir
 
-                    callback null
+                    callback null, skip
 
                 else
 
-                    callback new Error 'missing repo ' + workDir
+                    console.log '( SKIPPED )'.red, 'missing repo', workDir
+                    callback null, skip = true
 
-            (callback) -> 
+            (skip, callback) -> 
 
+                if skip
+
+                    callback null, skip
+                    return
+
+                currentBranch = git.showBranch( workDir )
+
+                if currentBranch == branch
+
+                    callback null, skip
+
+                else 
+
+                    console.log '( SKIPPED )'.red, workDir.bold, 'SHOULD BE ON BRANCH', branch.red, 'NOT', currentBranch.red
+                    callback null, skip = true
+
+
+
+            (skip, callback) -> 
+
+                if skip
+
+                    callback null, skip
+                    return
 
                 if git.hasStagedChanges workDir
 

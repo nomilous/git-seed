@@ -163,3 +163,24 @@ pending
 
 ```
 
+
+### **Important point** 
+
+* It may be that one of your repos has forgetccidentally been left checkedout on the wrong branch (according to the `./git_tree` control file)
+* The commit run **will report this case of affairs and take no further action** for that repo.  
+
+```bash
+
+> cd ./root/node_modules/elix
+> git checkout master
+> cd -
+> git nez commit -m 'shared commit log message'
+(commit) on all repositories with staged changes in . 
+
+(skip) no staged changes in .
+(skip) no staged changes in ./node/node_modules/brix
+(skip) no staged changes in ./node/node_modules/brix/node_modules/trix
+(skip) no staged changes in ./node_modules/nez
+( SKIPPED ) ./root/node_modules/elix SHOULD BE ON BRANCH refs/heads/develop NOT refs/heads/master
+
+```
