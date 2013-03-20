@@ -1,8 +1,5 @@
 Git   = require './tools/git'
 Shell = require './tools/shell'
-spawn = require('child_process').spawn
-
-seq = 0
 
 class GitRepo
 
@@ -40,6 +37,7 @@ class GitRepo
         console.log "MISSING repo @ #{@path}\n".red
         false
 
+
     printStatus: -> 
 
         unless Shell.gotDirectory @path + '/.git'
@@ -53,43 +51,9 @@ class GitRepo
         console.log status + '\n'
 
 
-    testSpawn: (command, opts, callback) -> 
-
-        console.log 'spawning shell command "%s %s" in %s', command, opts.toString(), @path
-
-        child = spawn command, opts
-
-        child.stdout.pipe process.stdout
-        child.stderr.pipe process.stderr
-
-        child.on 'close', (code, signal) ->
-
-            if code > 0
-
-                callback new Error command + opts.join(' ') + ' exited with errorcode: ' + code
-
-            else 
-
-                if seq > 1
-
-                    callback new Error 'broken' 
-                    return
-
-                callback null, 'ok' + seq++
-
-
     clone: (callback) ->
 
-        error = null
-
-        if Shell.gotDirectory @path + '/.git'
-
-            console.log '(skip)'.bold, "clone @ #{@path}"
-            callback error
-            
-        else
-
-            Git.clone @path, @origin, @branch, callback
+        Git.clone @path, @origin, @branch, callback
 
 
 

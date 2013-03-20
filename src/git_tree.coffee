@@ -81,7 +81,7 @@ class GitTree
 
     clone: -> 
 
-        actionOn @array, 'testSpawn', ['sleep' , [1]], 
+        actionOn @array, 'clone', null, 
 
             (error, result) -> 
 
@@ -89,14 +89,6 @@ class GitTree
 
                     error: error
                     result: result
-
-            (error, result) -> 
-
-                console.log 'STEP CALLBACK:\n'
-
-                    error: error
-                    result: result
-
 
 
 

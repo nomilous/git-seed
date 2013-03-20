@@ -86,10 +86,33 @@ module.exports = git =
         workDir + '/.git'
 
 
-    clone: (workDir, origin, branch, callback) -> 
-
-        error = null
+    clone: (workDir, origin, branch, finalCallback) -> 
 
         console.log 'clone %s into %s and checkout %s', origin, workDir, branch
+
+        #
+        # TODO: test that the clone is acutally necessary
+        #
+
+        waterfall [
+
+            #
+            # calls in serial, proceeds no further on fail
+            #
+
+            (callback) -> 
+
+                Shell.spawn 'sleep', [0], (error, result) ->
+
+                    callback error, result
+
+            (arg, callback) -> 
+
+                Shell.spawn 'sleep', [1], (error, result) ->
+
+                    callback error, result
+
+        ], finalCallback
+
 
 

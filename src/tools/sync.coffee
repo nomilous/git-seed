@@ -25,6 +25,7 @@ module.exports = sync =
 
         targets = []
         results = []
+        args    = [] unless args
 
         for target in targetsArray
 
