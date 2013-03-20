@@ -21,8 +21,8 @@ git nez -h
 #### Step 1 - init
 
 * This recurses for nested git repos starting at `.` or `--root /home/me/git/faraway_tree`.
-* It generates a control file `./git_tree` containing details of the found repos.
-* The `./git_tree` should be committed. 
+* It generates a control file `.nez_tree` containing details of the found repos.
+* The `.nez_tree` should be committed. 
 * It enables **others** in the team to generate **an identical tree** of cloned repos.
 
 
@@ -43,7 +43,7 @@ git nez -h
 
 (run) cat ./root/node_modules/elix/.git/HEAD
 (run) cat ./root/node_modules/elix/.git/refs/heads/develop
-(write) ./.git_tree
+(write) ./.nez_tree
 > 
 
 ```
@@ -52,7 +52,7 @@ git nez -h
 
 * This step is being performed **at another workstation** 
 * Only the root repo has been checked out there.
-* It uses the `./git_tree` control file to report on the status across all nested repositories that should be and/or are present.
+* It uses the `.nez_tree` control file to report on the status across all nested repositories that should be and/or are present.
 
 ```bash
 
@@ -85,7 +85,7 @@ MISSING repo @ ./root/node_modules/elix
 ### Step 3 - clone
 
 * This clones all the missing repositories.
-* It also checkouts the branches as specified in the `./git_tree` control file
+* It also checkouts the branches as specified in the `.nez_tree` control file
 
 ```bash
 
@@ -128,7 +128,7 @@ Switched to a new branch 'develop'
 
 ### **Important point** 
 
-* The `./git_tree` control file specifies the branch that each repo should be on.
+* The `.nez_tree` control file specifies the branch that each repo should be on.
 * Running a clone will checkout that branch
 
 ```bash
@@ -173,7 +173,7 @@ Switched to branch 'feature/test'
 
 ### **Important point** 
 
-* It may be that one of your repos has forgetccidentally been left checkedout on the wrong branch (according to the `./git_tree` control file)
+* It may be that one of your repos has forgetccidentally been left checkedout on the wrong branch (according to the `.nez_tree` control file)
 * The commit run **will report this case of affairs and take no further action** for that repo.  
 
 ```bash

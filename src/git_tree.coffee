@@ -20,7 +20,7 @@ class GitTree
 
     constructor: (@root, list) -> 
 
-        @control = "#{@root}/.git_tree"
+        @control = "#{@root}/.nez_tree"
 
         if list instanceof Array
 
@@ -30,15 +30,14 @@ class GitTree
 
             @array = @load()
 
-
     save: -> 
 
         try
 
-            fs.writeFileSync "#{@root}/.git_tree", 
+            fs.writeFileSync "#{@root}/.nez_tree", 
                 JSON.stringify( @array, null, 2 )
 
-            console.log '(write)'.green, "#{@root}/.git_tree"
+            console.log '(write)'.green, "#{@root}/.nez_tree"
 
         catch error
 
@@ -50,11 +49,12 @@ class GitTree
 
         try 
 
-            @noControl() unless fs.lstatSync(  @control  ).isFile()
+            throw '' unless fs.lstatSync(  @control  ).isFile()
 
         catch error
 
-            @noControl error
+            require('./git_action').exitCode = 2
+            throw "explected control file: #{@root}/.nez_tree"
 
         try
 
@@ -70,7 +70,8 @@ class GitTree
 
         catch error
 
-            @noControl error
+            require('./git_action').exitCode = 3
+            throw "error loading control file: #{@root}/.nez_tree #{error.toString()}"
 
 
     status: -> 

@@ -27,7 +27,7 @@ module.exports = GitAction =
         list  = {}
         arrayOfGitWorkdirs = []
 
-        find = require('findit').find GitAction.root 
+        find = require('findit').find GitAction.root
 
         find.on 'end', ->
 
@@ -49,9 +49,14 @@ module.exports = GitAction =
 
         console.log '(status)'.bold, 'for all expected repositories in', GitAction.root, '\n'
 
-        GitAction.error = ''
+        try
 
-        (new GitTree GitAction.root).status()
+            (new GitTree GitAction.root).status()
+
+        catch error
+
+            console.log '(error) '.red + error.toString()
+            process.exit GitAction.exitCode
 
 
     clone: ->
