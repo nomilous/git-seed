@@ -158,8 +158,15 @@ Switched to branch 'feature/test'
 ```bash
 
 > git nez commit -m 'shared commit log message'
+(commit) on all repositories with staged changes in . 
 
-pending
+(skip) no staged changes in .
+(skip) no staged changes in ./node/node_modules/brix
+(skip) no staged changes in ./node/node_modules/brix/node_modules/trix
+(skip) no staged changes in ./node_modules/nez
+(run) git --git-dir=./root/node_modules/elix/.git --work-tree=./root/node_modules/elix commit -m shared commit log message
+[develop 6e35bfe] test log message
+ 1 file changed, 2 deletions(-)
 
 ```
 

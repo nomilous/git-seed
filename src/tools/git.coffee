@@ -141,7 +141,7 @@ module.exports = git =
 
                         "--git-dir=#{workDir}/.git" # concerned about spaces in names
                         "--work-tree=#{workDir}"
-                        'checkout',
+                        'checkout'
                         branch.replace 'refs/heads/', ''
 
                     ], callback
@@ -195,16 +195,21 @@ module.exports = git =
                     callback null, skip
                     return
 
-                if git.hasStagedChanges workDir
-
-                    console.log 'got staged changes in', workDir
-                    callback null
-
-                else
+                unless git.hasStagedChanges workDir
 
                     console.log '(skip)'.green, 'no staged changes in', workDir
                     callback null
+                    return
 
+                Shell.spawn 'git', [
+
+                    "--git-dir=#{workDir}/.git" # concerned about spaces in names
+                    "--work-tree=#{workDir}"
+                    'commit'
+                    '-m'
+                    message
+
+                ], callback
 
 
 
