@@ -10,7 +10,7 @@
     "root": false,
     "path": "./node_modules/nez",
     "origin": "git@github.com:nomilous/nez.git",
-    "branch": "refs/heads/master",
-    "ref": "9485caa96565b49c50dd1c03e4de6ed30f911a84"
+    "branch": "refs/heads/develop",
+    "ref": "e5ef753487b27b19987a9733e3cb65d4985a68df"
   }
 ]
