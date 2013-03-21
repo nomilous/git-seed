@@ -1,0 +1,9 @@
+[
+  {
+    "root": true,
+    "path": ".",
+    "origin": "git@github.com:nomilous/git-nez.git",
+    "branch": "refs/heads/develop",
+    "ref": "ROOT_REPO_REF"
+  }
+]
