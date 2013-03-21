@@ -1,7 +1,7 @@
 fs       = require 'fs'
 colors   = require 'colors'  
 GitRepo  = require './git_repo'
-actionOn = require('./tools/sync').series
+actionOn = require('nez-kit').set.series
 
 class GitTree
 

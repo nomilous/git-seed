@@ -1,5 +1,5 @@
 Git   = require('nez-kit').git
-Shell =require('nez-kit').shell
+Shell = require('nez-kit').shell
 
 class GitRepo
 
