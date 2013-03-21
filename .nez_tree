@@ -12,5 +12,12 @@
     "origin": "git@github.com:nomilous/nez.git",
     "branch": "refs/heads/develop",
     "ref": "e5ef753487b27b19987a9733e3cb65d4985a68df"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/nez-kit",
+    "origin": "git@github.com:nomilous/nez-kit.git",
+    "branch": "refs/heads/develop",
+    "ref": "d296bda9b57c5aac7cfddda3e4bffd0e00798546"
   }
 ]
