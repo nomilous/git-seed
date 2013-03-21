@@ -10,7 +10,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should) ->
 
             catch error
 
-                error.should.match /m/
+                error.should.match /Cannot find module/
                 test done
 
             true.should.equal false
