@@ -127,7 +127,7 @@ Branch develop set up to track remote branch develop from origin.
 
 #### **Important point** 
 
-* The `.nez_tree` control file specifies the branch that each repo should be on.
+* The `.nez_tree` **control file specifies the branch** that each repo should be on.
 * Running a clone will checkout that branch
 
 ```bash
