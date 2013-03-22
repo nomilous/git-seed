@@ -1,7 +1,7 @@
-fs       = require 'fs'
-colors   = require 'colors'  
-GitRepo  = require './git_repo'
-actionOn = require('nez-kit').set.series
+fs      = require 'fs'
+colors  = require 'colors'  
+GitRepo = require './git_repo'
+series  = require('nez-kit').set.series
 
 class GitTree
 
@@ -83,13 +83,17 @@ class GitTree
 
     clone: (callback) -> 
 
-        actionOn @array, 'clone', null, callback
+        series
+            targets: @array
+            action: 'clone', callback
 
 
     commit: (message, callback) ->
 
-        actionOn @array, 'commit', [message], callback
-
+        series
+            targets: @array
+            action: 'commit', [message], callback
+            
 
     noControl: (ex) ->
 
