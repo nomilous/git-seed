@@ -1,6 +1,6 @@
 fs      = require 'fs'
 colors  = require 'colors'  
-GitRepo = require './git_repo'
+GitRepo = require('nez-kit').git.repo
 series  = require('nez-kit').set.series
 
 class GitTree
@@ -93,7 +93,7 @@ class GitTree
         series
             targets: @array
             action: 'commit', [message], callback
-            
+
 
     noControl: (ex) ->
 
