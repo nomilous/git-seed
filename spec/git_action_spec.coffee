@@ -1,37 +1,24 @@
+GitTree = require('nez-kit').git.tree
+
 require('nez').realize 'GitAction', (GitAction, test, context, should) -> 
 
-    context 'dependancies', (it) -> 
+    context 'init()', (performs) -> 
 
-        it 'does not use exec-sync', (done) -> 
+        performs 'the tree inititialize', (done) -> 
 
-            try 
-
-                require 'exec-sync'
-
-            catch error
-
-                error.should.match /Cannot find module/
-                test done
-
-            true.should.equal false
-
-
-    context 'init()', (generates) -> 
-
-        generates 'the control file', (done) -> 
-
-            true.should.equal false
-            test done
+            GitTree.init = -> test done
+            GitAction.assign( root: '.' ).init()
 
 
     context 'clone()', (performs) ->
 
-        performs 'git clones of all nested git repos', (done) ->
+        performs 'git clone of the tree', (done) ->
 
-            true.should.equal false
-            test done
+            GitTree.prototype.clone = -> test done
+            GitAction.assign( root: '.' ).clone()
 
-        parforms 'npm install for all nested npm modules', (done) ->
+
+        performs 'npm install in all nested modules', (done) ->
 
             true.should.equal false
             test done
@@ -39,9 +26,9 @@ require('nez').realize 'GitAction', (GitAction, test, context, should) ->
 
     context 'status()', (shows) -> 
 
-        shows 'git status across all nested modules', (done) ->  
+        shows 'git status of the tree', (done) ->  
 
-            true.should.equal false
-            test done
+            GitTree.prototype.status = -> test done
+            GitAction.assign( root: '.' ).status()
 
 

@@ -24,25 +24,15 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        list  = {}
-        arrayOfGitWorkdirs = []
+        try
 
-        find = require('findit').find GitAction.root
+            GitTree.init GitAction.root
 
-        find.on 'end', ->
+        catch error
 
-            tree = GitTree.init GitAction.root, arrayOfGitWorkdirs
-            tree.save()
+            console.log '(error) '.red + error.toString()
+            process.exit GitAction.exitCode
 
-        find.on 'directory', (dir, stat) -> 
-
-            if match = dir.match /(.*)\/.git\//
-
-                return unless typeof list[match[1]] == 'undefined'
-
-                console.log '(found)'.green, "#{match[1]}/.git"
-                list[match[1]] = 1
-                arrayOfGitWorkdirs.push match[1]
 
 
     status: ->
