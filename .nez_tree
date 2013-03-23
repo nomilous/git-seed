@@ -18,6 +18,13 @@
     "path": "./node_modules/nez-kit",
     "origin": "git@github.com:nomilous/nez-kit.git",
     "branch": "refs/heads/develop",
-    "ref": "968449a0f500c20d47d73ec50bc28b4d3a829e8e"
+    "ref": "d2288e755560f8bac511f68c4b7d7a0e26464bdc"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/nez-kit/node_modules/ipso",
+    "origin": "git@github.com:nomilous/ipso.git",
+    "branch": "refs/heads/master",
+    "ref": "cc8c36df3cfd7c92fa4d681ab80687b2bc003f59"
   }
 ]
