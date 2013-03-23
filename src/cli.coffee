@@ -2,8 +2,8 @@ program   = require 'commander'
 GitAction = require './git_action'
 
 
-program.option '-r, --root [root]',              'Specify the root repo. Default .'
-program.option '-m, --message [commit message]', 'Specify commit message'
+program.option '-r, --root      [root]',           'Specify the root repo. Default .'
+program.option '-m, --message   [commit_message]', 'Specify commit message'
 
 
 program
@@ -28,18 +28,33 @@ program
 
 program
     .command('pull')
-    .description('[PENDING] Git pull across all nested git repos not up-to-date with .nez_tree')
+    .description('[PENDING] Git pull across all nested git repos (per .git-seed)')
     .action -> GitAction.assign(program).pull arguments
 
 program
     .command('push')
-    .description('[PENDING] Git push across all nested git repos pending commits and update .nez_tree')
+    .description('[PENDING] Git push across all nested git repos (per .git-seed)')
     .action -> GitAction.assign(program).push arguments
 
 program
     .command('watch')
     .description('[PENDING (maybe)] Attach console to github rss feeds for all nested repos')
     .action -> GitAction.assign(program).push arguments
+
+
+
+
+
+#
+# TODO: Scaled deployability and content distribution (proxy trees).
+#
+
+program.option '-d, --as-daemon [config_file]',    '[NOT YET IMPLEMENTED] Run as a daemon.'
+program.option '-p, --as-proxy  [config_file]',    '[NOT YET IMPLEMENTED] Run as a distribution proxy.'
+
+
+
+
 
 
 program.parse process.argv
