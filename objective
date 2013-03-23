@@ -13,4 +13,4 @@ GitSeed = require('nez').objective 'GitSeed',
 
     """, (requirement) -> 
 
-        requirement.link 'requirements/cli'
+        requirement.link 'requirement/cli'
