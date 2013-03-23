@@ -1,20 +1,18 @@
 require('nez').realize 'GitAction', (GitAction, test, context, nezkit, should) -> 
 
-    console.log nezkit
-
     context 'init()', (performs) -> 
 
-        performs 'the tree inititialize', (done) -> 
+        performs 'the seed inititialize', (done) -> 
 
-            nezkit.git.tree.init = -> test done
+            nezkit.git.seed.init = -> test done
             GitAction.assign( root: '.' ).init()
 
 
     context 'clone()', (performs) ->
 
-        performs 'git clone of the tree', (done) ->
+        performs 'git clone of the seed repos', (done) ->
 
-            nezkit.git.tree.prototype.clone = -> test done
+            nezkit.git.seed.prototype.clone = -> test done
             GitAction.assign( root: '.' ).clone()
 
 
@@ -28,6 +26,6 @@ require('nez').realize 'GitAction', (GitAction, test, context, nezkit, should) -
 
         shows 'git status of the tree', (done) ->  
 
-            nezkit.git.tree.prototype.status = -> test done
+            nezkit.git.seed.prototype.status = -> test done
             GitAction.assign( root: '.' ).status()
 

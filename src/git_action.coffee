@@ -1,5 +1,5 @@
 colors  = require 'colors'
-GitTree = require('nezkit').git.tree
+GitSeed = require('nezkit').git.seed
 
 module.exports = GitAction =
 
@@ -26,7 +26,7 @@ module.exports = GitAction =
 
         try
 
-            GitTree.init GitAction.root
+            GitSeed.init GitAction.root
 
         catch error
 
@@ -43,7 +43,7 @@ module.exports = GitAction =
 
         try
 
-            (new GitTree GitAction.root).status()
+            (new GitSeed GitAction.root).status()
 
         catch error
 
@@ -57,7 +57,7 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitTree GitAction.root).clone (error, result) ->
+        (new GitSeed GitAction.root).clone (error, result) ->
 
             if error
 
@@ -73,7 +73,7 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitTree GitAction.root).commit GitAction.message, (error, result) ->
+        (new GitSeed GitAction.root).commit GitAction.message, (error, result) ->
 
             if error
 
