@@ -33,8 +33,8 @@ git seed -h
 ### Step 1 - init
 
 * This recurses for nested git repos starting at `.` or `--root /home/me/git/faraway_tree`.
-* It generates a control file `.git_seed` containing details of the found repos.
-* The `.git_seed` should be committed. 
+* It generates a control file `.git-seed` containing details of the found repos.
+* The `.git-seed` should be committed. 
 * It enables **others** in the team to generate **an identical tree** of cloned repos.
 
 
@@ -48,7 +48,7 @@ git seed -h
 (found) ./node/node_modules/brix/node_modules/trix/.git
 (found) ./node_modules/nez/.git
 (found) ./root/node_modules/elix/.git
-(write) ./.git_seed
+(write) ./.git-seed
 
 > 
 
@@ -58,7 +58,7 @@ git seed -h
 
 * This step is being performed **at another workstation** 
 * Only the root repo has been checked out there.
-* It uses the `.git_seed` control file to report on the status across all nested repositories that should be and/or are present.
+* It uses the `.git-seed` control file to report on the status across all nested repositories that should be and/or are present.
 
 ```bash
 
@@ -79,7 +79,7 @@ git seed -h
 ### Step 3 - clone
 
 * This clones all the missing repositories.
-* It also checkouts the branches as specified in the `.git_seed` control file
+* It also checkouts the branches as specified in the `.git-seed` control file
 
 ```bash
 
@@ -129,7 +129,7 @@ Branch develop set up to track remote branch develop from origin.
 
 #### **Important point** 
 
-* The `.git_seed` **control file specifies the branch** that each repo should be on.
+* The `.git-seed` **control file specifies the branch** that each repo should be on.
 * Running a clone will checkout that branch
 
 ```bash
@@ -227,7 +227,7 @@ nothing to commit (working directory clean)
 
 #### **Important point** 
 
-* It may be that one of your repos has forgetccidentally been left checkedout on the wrong branch (according to the `.git_seed` control file)
+* It may be that one of your repos has forgetccidentally been left checkedout on the wrong branch (according to the `.git-seed` control file)
 * The commit run **will report this case of affairs and take no further action** for that repo.  
 
 ```bash

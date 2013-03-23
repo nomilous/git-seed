@@ -2,7 +2,7 @@
   {
     "root": true,
     "path": ".",
-    "origin": "git@github.com:nomilous/git-nez.git",
+    "origin": "git@github.com:nomilous/git-seed.git",
     "branch": "refs/heads/develop",
     "ref": "ROOT_REPO_REF"
   },
@@ -17,7 +17,7 @@
     "root": false,
     "path": "./node_modules/nezkit",
     "origin": "git@github.com:nomilous/nezkit.git",
-    "branch": "refs/heads/master",
-    "ref": "bceb0efeb398a8461c59660a8ebe688b4bea6cb7"
+    "branch": "refs/heads/develop",
+    "ref": "75785f9ada2b727fcbdbc2d532b07dc3f0622188"
   }
 ]

@@ -14,9 +14,8 @@ require('nez').realize 'GitAction', (GitAction, test, context, nezkit, should) -
 
         performs 'git clone of the tree', (done) ->
 
-            test done
-            # nezkit.git.tree.must receive clone: -> test done
-            # GitAction.assign( root: '.' ).clone()
+            nezkit.git.tree.prototype.clone = -> test done
+            GitAction.assign( root: '.' ).clone()
 
 
         performs 'npm install in all nested modules', (done) ->
