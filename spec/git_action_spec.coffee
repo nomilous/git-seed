@@ -14,7 +14,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should) ->
 
         performs 'git clone of the tree', (done) ->
 
-            GitTree.prototype.clone = -> test done
+            GitTree.must receive clone: -> test done
             GitAction.assign( root: '.' ).clone()
 
 
