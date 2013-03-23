@@ -31,4 +31,3 @@ require('nez').realize 'GitAction', (GitAction, test, context, should) ->
             GitTree.prototype.status = -> test done
             GitAction.assign( root: '.' ).status()
 
-

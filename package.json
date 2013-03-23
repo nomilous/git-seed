@@ -1,7 +1,7 @@
 {
-  "name": "git-nez",
-  "description": "A simple alternative to git submodules and npm linking.",
-  "version": "0.0.2",
+  "name": "git-seed",
+  "description": "Git plugin to easily create, manage and replicate a composite clone",
+  "version": "0.0.1",
   "author": "nomilous <nomilous@gmail.com>",
   "contributors": [
     {
@@ -10,11 +10,11 @@
     }
   ],
   "bin": {
-    "git-nez": "./bin/git-nez"
+    "git-seed": "./bin/git-seed"
   },
-  "repository": "git@github.com:nomilous/git-nez.git",
+  "repository": "git@github.com:nomilous/git-seed.git",
   "dependencies": {
-    "nez-kit":"0.0.1",
+    "nezkit":"0.0.1",
     "commander": "~1.1.1",
     "colors": "~0.6.0-1"
   },

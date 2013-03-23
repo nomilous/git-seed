@@ -1,5 +1,5 @@
-git-nez
-=======
+git-seed
+========
 
 A simple alternative to git submodules and npm linking. 
 
@@ -15,7 +15,7 @@ A simple alternative to git submodules and npm linking.
 ### Install
 
 ```bash
-sudo npm install git-nez -g
+sudo npm install git-seed -g
 ```
 
 
@@ -25,20 +25,20 @@ Usage
 ### Step 0 
 
 ```bash
-git nez -h
+git seed -h
 ```
 
 ### Step 1 - init
 
 * This recurses for nested git repos starting at `.` or `--root /home/me/git/faraway_tree`.
-* It generates a control file `.nez_tree` containing details of the found repos.
-* The `.nez_tree` should be committed. 
+* It generates a control file `.git_seed` containing details of the found repos.
+* The `.git_seed` should be committed. 
 * It enables **others** in the team to generate **an identical tree** of cloned repos.
 
 
 ```bash
 
-> git nez init
+> git seed init
 (init) scanning for git repositories in . 
 
 (found) ./.git
@@ -46,7 +46,7 @@ git nez -h
 (found) ./node/node_modules/brix/node_modules/trix/.git
 (found) ./node_modules/nez/.git
 (found) ./root/node_modules/elix/.git
-(write) ./.nez_tree
+(write) ./.git_seed
 
 > 
 
@@ -56,11 +56,11 @@ git nez -h
 
 * This step is being performed **at another workstation** 
 * Only the root repo has been checked out there.
-* It uses the `.nez_tree` control file to report on the status across all nested repositories that should be and/or are present.
+* It uses the `.git_seed` control file to report on the status across all nested repositories that should be and/or are present.
 
 ```bash
 
-> git nez status
+> git seed status
 (status) for all expected repositories in . 
 
 (skip) no change at .
@@ -77,11 +77,11 @@ git nez -h
 ### Step 3 - clone
 
 * This clones all the missing repositories.
-* It also checkouts the branches as specified in the `.nez_tree` control file
+* It also checkouts the branches as specified in the `.git_seed` control file
 
 ```bash
 
-> git nez clone
+> git seed clone
 (clone) all missing repositories in . 
 
 (skip) already cloned .
@@ -113,7 +113,7 @@ Branch develop set up to track remote branch develop from origin.
 # doing it again has the expected result
 #
 
-> git nez clone
+> git seed clone
 (clone) all missing repositories in . 
 
 (skip) already cloned .
@@ -127,7 +127,7 @@ Branch develop set up to track remote branch develop from origin.
 
 #### **Important point** 
 
-* The `.nez_tree` **control file specifies the branch** that each repo should be on.
+* The `.git_seed` **control file specifies the branch** that each repo should be on.
 * Running a clone will checkout that branch
 
 ```bash
@@ -135,7 +135,7 @@ Branch develop set up to track remote branch develop from origin.
 > cd ./node/node_modules/brix/node_modules/trix
 > git checkout master
 > cd -
-> git nez clone
+> git seed clone
 (clone) all missing repositories in . 
 
 (skip) already cloned .
@@ -154,7 +154,7 @@ Switched to branch 'feature/test'
 
 ```bash
 
-> git nez status
+> git seed status
 (status) for all expected repositories in . 
 
 (skip) no change at .
@@ -187,7 +187,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 > cd ./root/node_modules/elix
 > git add requirements/manageability.coffee 
 > cd ../../ 
-> git nez commit -m 'it propagates a config hup into the tree'
+> git seed commit -m 'it propagates a config hup into the tree'
 (commit) on all repositories with staged changes in . 
 
 (skip) no staged changes in .
@@ -204,7 +204,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 # the new status as expected
 #
 
-> git nez status
+> git seed status
 (status) for all expected repositories in . 
 
 (skip) no change at .
@@ -225,7 +225,7 @@ nothing to commit (working directory clean)
 
 #### **Important point** 
 
-* It may be that one of your repos has forgetccidentally been left checkedout on the wrong branch (according to the `.nez_tree` control file)
+* It may be that one of your repos has forgetccidentally been left checkedout on the wrong branch (according to the `.git_seed` control file)
 * The commit run **will report this case of affairs and take no further action** for that repo.  
 
 ```bash
@@ -233,7 +233,7 @@ nothing to commit (working directory clean)
 > cd ./root/node_modules/elix
 > git checkout master
 > cd -
-> git nez commit -m 'shared commit log message'
+> git seed commit -m 'shared commit log message'
 (commit) on all repositories with staged changes in . 
 
 (skip) no staged changes in .

@@ -1,5 +1,5 @@
 colors  = require 'colors'
-GitTree = require('nez-kit').git.tree
+GitTree = require('nezkit').git.tree
 
 module.exports = GitAction =
 
