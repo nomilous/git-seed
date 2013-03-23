@@ -7,9 +7,9 @@ GitSeed = require('nez').objective 'GitSeed',
     category:    'Deployability'
     description: """
 
-        Simplify the infrastructual overhead
-        of concurrently developing and deploying
-        multiple interdependant modules.
+        Simplify the infrastructual overhead of developing,
+        testing and deploying applications composed of mul-
+        tiple component modules.
 
     """, (requirement) -> 
 
