@@ -1,7 +1,9 @@
 git-seed
 ========
 
-A simple alternative to git submodules and npm linking. 
+[objective](https://github.com/nomilous/git-seed/blob/master/objective)
+
+
 
 ### Current version 
 
