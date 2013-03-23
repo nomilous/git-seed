@@ -4,7 +4,6 @@ git-seed
 [objective](https://github.com/nomilous/git-seed/blob/master/objective)
 
 
-
 ### Current version 
 
 0.0.2

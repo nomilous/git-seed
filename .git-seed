@@ -8,16 +8,9 @@
   },
   {
     "root": false,
-    "path": "./node_modules/nez",
-    "origin": "git@github.com:nomilous/nez.git",
-    "branch": "refs/heads/develop",
-    "ref": "e5ef753487b27b19987a9733e3cb65d4985a68df"
-  },
-  {
-    "root": false,
     "path": "./node_modules/nezkit",
     "origin": "git@github.com:nomilous/nezkit.git",
     "branch": "refs/heads/develop",
-    "ref": "f1f3234a35a449145690e7041e9f55a796f42617"
+    "ref": "ec40535812153dd4843678d9dc756fc688c2a757"
   }
 ]
