@@ -14,12 +14,12 @@
   },
   "repository": "git@github.com:nomilous/git-seed.git",
   "dependencies": {
-    "nezkit": "0.0.3",
+    "nezkit": "0.0.5",
     "commander": "~1.1.1",
     "colors": "~0.6.0-1"
   },
   "devDependencies": {
     "should": "~1.2.2",
-    "nez": "0.0.3"
+    "nez": "0.0.5"
   }
 }
