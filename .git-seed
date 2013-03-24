@@ -5,5 +5,12 @@
     "origin": "git@github.com:nomilous/git-seed.git",
     "branch": "refs/heads/develop",
     "ref": "ROOT_REPO_REF"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/nez",
+    "origin": "git@github.com:nomilous/nez.git",
+    "branch": "refs/heads/develop",
+    "ref": "f42e3b7387fcff67ba56c890f3c424cdf66ece1e"
   }
 ]
