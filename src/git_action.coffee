@@ -1,5 +1,7 @@
 colors  = require 'colors'
 GitSeed = require('nezkit').git.seed
+Shell   = require('nezkit').shell
+Npm     = require('nezkit').npm
 
 module.exports = GitAction =
 
@@ -12,7 +14,7 @@ module.exports = GitAction =
 
     assign: (program) ->
 
-        GitAction.root       = program.root || '.' 
+        GitAction.root       = '.' 
         GitAction.message    = program.message
         GitAction.npmInstall = program.npmInstall || false
         return GitAction 
@@ -27,12 +29,17 @@ module.exports = GitAction =
 
         try
 
+            unless Shell.gotDirectory GitAction.root + '/.git'
+
+                console.log '(fail)'.red, 'no root reposititory in', GitAction.root, '\n'
+                process.exit 1
+
             GitSeed.init GitAction.root
 
         catch error
 
             console.log '(error) '.red + error.toString()
-            process.exit GitAction.exitCode
+            process.exit 2
 
 
 
@@ -49,7 +56,7 @@ module.exports = GitAction =
         catch error
 
             console.log '(error) '.red + error.toString()
-            process.exit GitAction.exitCode
+            process.exit 3
 
 
     clone: ->
@@ -58,17 +65,25 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.root).clone (error, result) ->
+        seed = new GitSeed GitAction.root
+        seed.clone (error, result) ->
 
             if error
 
                 console.log '(error) '.red + error.toString()
                 process.exit 4
 
+            unless GitAction.npmInstall
 
-            if GitAction.npmInstall 
+                process.exit 0
+                
 
-                console.log 'npm install'
+            Npm.install GitAction.root, seed, (error, result) -> 
+
+                if error
+
+                    console.log '(error) '.red + error.toString()
+                    process.exit 5
 
             process.exit 0
 
@@ -84,7 +99,7 @@ module.exports = GitAction =
             if error
 
                 console.log '(error) '.red + error.toString()
-                process.exit 5
+                process.exit 6
 
             process.exit 0
 

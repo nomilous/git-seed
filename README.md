@@ -31,7 +31,7 @@ git seed -h
 
 ### Step 1 - init
 
-* This recurses for nested git repos starting at `.` or `--root /home/me/git/faraway_tree`.
+* This recurses for nested git repos starting at `.`
 * It generates a control file `.git-seed` containing details of the found repos.
 * The `.git-seed` should be committed. 
 * It enables **others** in the team to generate **an identical tree** of cloned repos.
