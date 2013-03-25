@@ -18,6 +18,13 @@
     "path": "./node_modules/nez/node_modules/nezcore",
     "origin": "git@github.com:nomilous/nezcore.git",
     "branch": "refs/heads/master",
-    "ref": "3a6109fbfb9c50ffdcb17337c29019fcd2c28a0f"
+    "ref": "0849700fa2cd0eaa46100305f5d80dbf828f6195"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/nezkit",
+    "origin": "git@github.com:nomilous/nezkit.git",
+    "branch": "refs/heads/develop",
+    "ref": "b1aa92cc5f13222c1119665dc445a1f4b64b2a70"
   }
 ]

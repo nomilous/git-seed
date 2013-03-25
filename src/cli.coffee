@@ -3,6 +3,7 @@ GitAction = require './git_action'
 
 
 program.option '-r, --root      [root]',           'Specify the root repo. Default .'
+program.option '-n, --npm-install',                'Run nmp install after clone'       
 program.option '-m, --message   [commit_message]', 'Specify commit message'
 
 

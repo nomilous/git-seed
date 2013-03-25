@@ -12,8 +12,9 @@ module.exports = GitAction =
 
     assign: (program) ->
 
-        GitAction.root    = program.root || '.' 
-        GitAction.message = program.message
+        GitAction.root       = program.root || '.' 
+        GitAction.message    = program.message
+        GitAction.npmInstall = program.npmInstall || false
         return GitAction 
 
 
@@ -63,6 +64,11 @@ module.exports = GitAction =
 
                 console.log '(error) '.red + error.toString()
                 process.exit 4
+
+
+            if GitAction.npmInstall 
+
+                console.log 'npm install'
 
             process.exit 0
 
