@@ -11,13 +11,13 @@
     "path": "./node_modules/nez",
     "origin": "git@github.com:nomilous/nez.git",
     "branch": "refs/heads/develop",
-    "ref": "f42e3b7387fcff67ba56c890f3c424cdf66ece1e"
+    "ref": "481dd0a2438841ccec1f582979861593f0288de0"
   },
   {
     "root": false,
     "path": "./node_modules/nez/node_modules/nezcore",
     "origin": "git@github.com:nomilous/nezcore.git",
     "branch": "refs/heads/master",
-    "ref": "c463aed877728327db04f8874110444237ecb52a"
+    "ref": "3a6109fbfb9c50ffdcb17337c29019fcd2c28a0f"
   }
 ]
