@@ -18,7 +18,14 @@
     "path": "./node_modules/nezkit/node_modules/nez",
     "origin": "git@github.com:nomilous/nez.git",
     "branch": "refs/heads/develop",
-    "ref": "82c1129c4e7783b5144270b94e766b07b1b61e9a"
+    "ref": "f09947e81aa56588c539ef93c55f6674f3b3026c"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/nezkit/node_modules/nez/node_modules/fing",
+    "origin": "git@github.com:nomilous/fing.git",
+    "branch": "refs/heads/master",
+    "ref": "7634649e2ebebe5b1aa4ead1a073d5414d86132e"
   },
   {
     "root": false,
@@ -26,5 +33,19 @@
     "origin": "git@github.com:nomilous/ipso.git",
     "branch": "refs/heads/develop",
     "ref": "75095f7e3c42071e8d7d320dc7e07c413a942e25"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/nezkit/node_modules/nez/node_modules/nezcore",
+    "origin": "git@github.com:nomilous/nezcore.git",
+    "branch": "refs/heads/master",
+    "ref": "66b5ce98905f7d25361085bfa539f6e14383055d"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/nezkit/node_modules/nez/node_modules/nezcore/node_modules/fing",
+    "origin": "git@github.com:nomilous/fing.git",
+    "branch": "refs/heads/master",
+    "ref": "7634649e2ebebe5b1aa4ead1a073d5414d86132e"
   }
 ]
