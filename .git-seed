@@ -17,14 +17,14 @@
     "root": false,
     "path": "./node_modules/nezkit/node_modules/nez",
     "origin": "git@github.com:nomilous/nez.git",
-    "branch": "refs/heads/master",
-    "ref": "1302efa48b0153c815b76e21e6d644d11b1f21ea"
+    "branch": "refs/heads/develop",
+    "ref": "82c1129c4e7783b5144270b94e766b07b1b61e9a"
   },
   {
     "root": false,
     "path": "./node_modules/nezkit/node_modules/nez/node_modules/ipso",
     "origin": "git@github.com:nomilous/ipso.git",
-    "branch": "refs/heads/master",
-    "ref": "ac34b552b2633159ef8f4cbaa0bcd62eee170acd"
+    "branch": "refs/heads/develop",
+    "ref": "75095f7e3c42071e8d7d320dc7e07c413a942e25"
   }
 ]
