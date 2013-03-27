@@ -32,7 +32,7 @@
     "path": "./node_modules/nezkit/node_modules/nez/node_modules/ipso",
     "origin": "git@github.com:nomilous/ipso.git",
     "branch": "refs/heads/develop",
-    "ref": "75095f7e3c42071e8d7d320dc7e07c413a942e25"
+    "ref": "1dcc95de3400d593b3d6ec5ea597378a975aaa69"
   },
   {
     "root": false,
