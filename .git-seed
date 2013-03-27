@@ -22,6 +22,13 @@
   },
   {
     "root": false,
+    "path": "./node_modules/nezkit/node_modules/nez/node_modules/eo",
+    "origin": "git@github.com:nomilous/eo.git",
+    "branch": "refs/heads/master",
+    "ref": "db9c2814b3646908aa08334c1fee33fa91751655"
+  },
+  {
+    "root": false,
     "path": "./node_modules/nezkit/node_modules/nez/node_modules/fing",
     "origin": "git@github.com:nomilous/fing.git",
     "branch": "refs/heads/master",
@@ -32,7 +39,7 @@
     "path": "./node_modules/nezkit/node_modules/nez/node_modules/ipso",
     "origin": "git@github.com:nomilous/ipso.git",
     "branch": "refs/heads/develop",
-    "ref": "7c2786a5bcc90537dbd6a989066e2e4c43c8b3f9"
+    "ref": "075b3cb02d99df998eb18544520961c51ca4b8af"
   },
   {
     "root": false,
