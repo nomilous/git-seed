@@ -11,7 +11,7 @@
     "path": "./node_modules/nezkit",
     "origin": "git@github.com:nomilous/nezkit.git",
     "branch": "refs/heads/develop",
-    "ref": "3f55d4c0d34a51e5bf50c42596ba338d906322e6"
+    "ref": "98b4dc621d597dabd37188668c0dd8b362eb2b0e"
   },
   {
     "root": false,
@@ -25,7 +25,7 @@
     "path": "./node_modules/nezkit/node_modules/nez/node_modules/eo",
     "origin": "git@github.com:nomilous/eo.git",
     "branch": "refs/heads/master",
-    "ref": "b4d2cbac8c407bd136e5b61305aabb6a2a232329"
+    "ref": "a577e407874d6bc5d71b12f171dbd3c01627b2df"
   },
   {
     "root": false,
