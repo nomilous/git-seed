@@ -4,20 +4,31 @@
     "path": ".",
     "origin": "git@github.com:nomilous/git-seed.git",
     "branch": "refs/heads/develop",
-    "ref": "ROOT_REPO_REF"
+    "ref": "ROOT_REPO_REF",
+    "manager": "npm"
   },
   {
     "root": false,
     "path": "./node_modules/git-seed-npm",
     "origin": "git@github.com:nomilous/git-seed-npm.git",
     "branch": "refs/heads/master",
-    "ref": "187b2abf9611538087179750a178d6ecfced0716"
+    "ref": "5ac593c89d4e963a3f5be51072cebc213b049dd3",
+    "manager": "npm"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/git-seed-npm/node_modules/git-seed-core",
+    "origin": "git@github.com:nomilous/git-seed-core.git",
+    "branch": "refs/heads/master",
+    "ref": "0e228560a57ebe8414356998d13539004474ca81",
+    "manager": "npm"
   },
   {
     "root": false,
     "path": "./node_modules/nezkit",
     "origin": "git@github.com:nomilous/nezkit.git",
     "branch": "refs/heads/feature/modules",
-    "ref": "477c39c436ba4f9baf737157cab0bfb630c08982"
+    "ref": "8d23fc7e420ea098c70604f004bcb6d09cb48303",
+    "manager": "npm"
   }
 ]

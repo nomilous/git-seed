@@ -1,9 +1,18 @@
 colors  = require 'colors'
-GitSeed = require('nezkit').git.seed
-Shell   = require('nezkit').shell
-Npm     = require('nezkit').npm
+GitSeed = require('nezkit').seed
+fs      = require 'fs'
 
 module.exports = GitAction =
+
+    gotDirectory: (directory) -> 
+
+        try 
+
+            return fs.lstatSync( directory ).isDirectory()
+
+        catch error
+
+            return false
 
     isError: -> error == ''
 
@@ -20,6 +29,7 @@ module.exports = GitAction =
 
         try
 
+            console.log plugin
             GitAction.plugin = require "git-seed-#{plugin}"
 
         catch error
@@ -38,9 +48,9 @@ module.exports = GitAction =
 
         try
 
-            unless Shell.gotDirectory GitAction.root + '/.git'
+            unless GitAction.gotDirectory GitAction.root + '/.git'
 
-                console.log '(fail)'.red, 'no root reposititory in', GitAction.root, '\n'
+                console.log '(fail)'.red, 'no git reposititory in', GitAction.root, '\n'
                 process.exit 2
 
             GitSeed.init GitAction.root, GitAction.plugin

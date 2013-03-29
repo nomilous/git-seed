@@ -1,7 +1,7 @@
 program   = require 'commander'
 GitAction = require './git_action'
 
-program.option '-p  --package-manager [package_manager]',  'Calls package manager after each clone / pull'       
+program.option '    --package-manager [package_manager]',  'Calls package manager after each clone / pull'       
 program.option '-m, --message         [commit_message]',   'Specify commit message'
 
 
@@ -48,8 +48,8 @@ program
 # TODO: Scaled deployability and content distribution (proxy trees).
 #
 
-program.option '-d, --as-daemon [config_file]',    '[NOT YET IMPLEMENTED] Run as a daemon.'
-program.option '-p, --as-proxy  [config_file]',    '[NOT YET IMPLEMENTED] Run as a distribution proxy.'
+program.option '-d, --as-daemon       [config_file]',    '[NOT YET IMPLEMENTED] Run as a daemon.'
+program.option '-p, --as-proxy        [config_file]',    '[NOT YET IMPLEMENTED] Run as a distribution proxy.'
 
 
 
