@@ -25,11 +25,10 @@ module.exports = GitAction =
 
         GitAction.root    = '.' 
         GitAction.message = program.message
-        plugin            = GitAction.packageManager || 'npm'
+        plugin            = program.packageManager || 'npm'
 
         try
-
-            console.log plugin
+            
             GitAction.plugin = require "git-seed-#{plugin}"
 
         catch error

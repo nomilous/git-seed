@@ -12,7 +12,7 @@
     "path": "./node_modules/git-seed-npm",
     "origin": "git@github.com:nomilous/git-seed-npm.git",
     "branch": "refs/heads/master",
-    "ref": "5ac593c89d4e963a3f5be51072cebc213b049dd3",
+    "ref": "5e3518e640dead63bded648de98eb625918fef20",
     "manager": "npm"
   },
   {
@@ -20,7 +20,7 @@
     "path": "./node_modules/git-seed-npm/node_modules/git-seed-core",
     "origin": "git@github.com:nomilous/git-seed-core.git",
     "branch": "refs/heads/master",
-    "ref": "0e228560a57ebe8414356998d13539004474ca81",
+    "ref": "c69ec4b7a687f3a3dd695bf4f50e2d3d5c6c624f",
     "manager": "npm"
   },
   {
@@ -28,7 +28,7 @@
     "path": "./node_modules/nezkit",
     "origin": "git@github.com:nomilous/nezkit.git",
     "branch": "refs/heads/feature/modules",
-    "ref": "8d23fc7e420ea098c70604f004bcb6d09cb48303",
+    "ref": "6807c7a9c855887afa8f129beb664cf98173272d",
     "manager": "npm"
   }
 ]
