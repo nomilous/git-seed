@@ -113,11 +113,13 @@ module.exports = GitAction =
     push: -> 
 
         GitAction.error = ''
+        process.exit 6
+        process.exit 7
         
 
     pull: -> 
 
-        console.log '(pull)'.bold, 'on all repositories', 'with staged changes'.bold, 'in', GitAction.root, '\n'
+        console.log '(pull)'.bold, 'pull root repo', GitAction.root, '\n'
 
         GitAction.error = ''
 
@@ -131,7 +133,23 @@ module.exports = GitAction =
             if error
 
                 console.log '(error) '.red + error.toString()
-                process.exit 6
+                process.exit 9
+
+
+            #
+            # load the seed packages again (now with the latest .git-seed)
+            # and recall to pull all nested repos
+            # 
+
+            console.log '(pull)'.bold, 'all nested repos'
+
+            seed = new GitSeed GitAction.root, GitAction.plugin
+            seed.pull seed, (error, result) -> 
+
+                if error
+
+                    console.log '(error) '.red + error.toString()
+                    process.exit 10
 
 
         process.exit 0
@@ -145,4 +163,11 @@ module.exports = GitAction =
         # then package manager install on all
         #
         
+
+
+
+
+
+
+
 
