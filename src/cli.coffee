@@ -1,8 +1,8 @@
 program   = require 'commander'
 GitAction = require './git_action'
 
-program.option '-n, --npm-install',                'Run nmp install after clone'       
-program.option '-m, --message   [commit_message]', 'Specify commit message'
+program.option '-p  --package-manager [package_manager]',  'Calls package manager after each clone / pull'       
+program.option '-m, --message         [commit_message]',   'Specify commit message'
 
 
 program

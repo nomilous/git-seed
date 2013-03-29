@@ -14,11 +14,20 @@ module.exports = GitAction =
 
     assign: (program) ->
 
-        GitAction.root       = '.' 
-        GitAction.message    = program.message
-        GitAction.npmInstall = program.npmInstall || false
-        return GitAction 
+        GitAction.root    = '.' 
+        GitAction.message = program.message
+        plugin            = GitAction.packageManager || 'npm'
 
+        try
+
+            GitAction.plugin = require "git-seed-#{plugin}"
+
+        catch error
+
+            console.log '(error) '.red + 'while loading plugin: ' + error.toString()
+            process.exit 1
+
+        return GitAction 
 
 
     init: -> 
@@ -32,15 +41,14 @@ module.exports = GitAction =
             unless Shell.gotDirectory GitAction.root + '/.git'
 
                 console.log '(fail)'.red, 'no root reposititory in', GitAction.root, '\n'
-                process.exit 1
+                process.exit 2
 
-            GitSeed.init GitAction.root
+            GitSeed.init GitAction.root, GitAction.plugin
 
         catch error
 
             console.log '(error) '.red + error.toString()
-            process.exit 2
-
+            process.exit 3
 
 
     status: ->
@@ -51,7 +59,7 @@ module.exports = GitAction =
 
         try
 
-            (new GitSeed GitAction.root).status()
+            (new GitSeed GitAction.root, GitAction.plugin).status()
 
         catch error
 
@@ -65,25 +73,13 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        seed = new GitSeed GitAction.root
+        seed = new GitSeed GitAction.root, GitAction.plugin
         seed.clone (error, result) ->
 
             if error
 
                 console.log '(error) '.red + error.toString()
                 process.exit 4
-
-            unless GitAction.npmInstall
-
-                process.exit 0
-                
-
-            Npm.install GitAction.root, seed, (error, result) -> 
-
-                if error
-
-                    console.log '(error) '.red + error.toString()
-                    process.exit 5
 
             process.exit 0
 

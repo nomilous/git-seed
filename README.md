@@ -19,6 +19,29 @@ git-seed
 sudo npm install git-seed -g
 ```
 
+### Package Manager Plugins
+
+Default package manager plugin module is [git-seed-npm](https://github.com/nomilous/git-seed-npm). Alternative plugins might come to exist.
+
+To use an alternative:
+
+```bash
+
+#
+# the plugin will need to be installed globally (once)
+#
+
+sudo npm install git-seed-bundler -g
+
+#
+# seed initialization can the specify
+#
+
+git seed --package-manager bundler init 
+
+```
+
+
 
 Usage
 -----

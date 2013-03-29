@@ -8,9 +8,16 @@
   },
   {
     "root": false,
+    "path": "./node_modules/git-seed-npm",
+    "origin": "git@github.com:nomilous/git-seed-npm.git",
+    "branch": "refs/heads/master",
+    "ref": "187b2abf9611538087179750a178d6ecfced0716"
+  },
+  {
+    "root": false,
     "path": "./node_modules/nezkit",
     "origin": "git@github.com:nomilous/nezkit.git",
     "branch": "refs/heads/feature/modules",
-    "ref": "155f4e09647a2aa0fa80ff3f66c7f9343659a437"
+    "ref": "477c39c436ba4f9baf737157cab0bfb630c08982"
   }
 ]
