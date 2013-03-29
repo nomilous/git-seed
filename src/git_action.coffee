@@ -28,7 +28,7 @@ module.exports = GitAction =
         plugin            = program.packageManager || 'npm'
 
         try
-            
+
             GitAction.plugin = require "git-seed-#{plugin}"
 
         catch error
@@ -117,6 +117,20 @@ module.exports = GitAction =
 
     pull: -> 
 
+        console.log '(commit)'.bold, 'on all repositories', 'with staged changes'.bold, 'in', GitAction.root, '\n'
+
         GitAction.error = ''
+
+        #
+        # first pull the root repo to get the latest .git-seed file
+        #
+
+        #
+        # then pull all with ref differing from .git-seed
+        #
+
+        #
+        # then package manager install on all
+        #
         
 

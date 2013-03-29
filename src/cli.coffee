@@ -1,7 +1,7 @@
 program   = require 'commander'
 GitAction = require './git_action'
 
-program.option '    --package-manager [package_manager]',  'Calls package manager after each clone / pull'       
+program.option '    --package-manager [package_manager]',  'Calls package manager after each clone/pull (default npm)'       
 program.option '-m, --message         [commit_message]',   'Specify commit message'
 
 
@@ -27,7 +27,7 @@ program
 
 program
     .command('pull')
-    .description('[PENDING] Git pull across all nested git repos (per .git-seed)')
+    .description('Git pull across all nested git repos.')
     .action -> GitAction.assign(program).pull arguments
 
 program
