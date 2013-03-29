@@ -99,7 +99,7 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.root).commit GitAction.message, (error, result) ->
+        (new GitSeed GitAction.root, GitAction.plugin).commit GitAction.message, (error, result) ->
 
             if error
 
@@ -117,14 +117,26 @@ module.exports = GitAction =
 
     pull: -> 
 
-        console.log '(commit)'.bold, 'on all repositories', 'with staged changes'.bold, 'in', GitAction.root, '\n'
+        console.log '(pull)'.bold, 'on all repositories', 'with staged changes'.bold, 'in', GitAction.root, '\n'
 
         GitAction.error = ''
 
-        #
-        # first pull the root repo to get the latest .git-seed file
-        #
+        (new GitSeed GitAction.root, GitAction.plugin).pull null, (error, result) -> 
 
+            #
+            # First call to pull with a null fetches only the root repo
+            # to get the latest .git-seed file
+            #
+
+            if error
+
+                console.log '(error) '.red + error.toString()
+                process.exit 6
+
+
+        process.exit 0
+
+      
         #
         # then pull all with ref differing from .git-seed
         #
