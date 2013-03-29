@@ -10,42 +10,7 @@
     "root": false,
     "path": "./node_modules/nezkit",
     "origin": "git@github.com:nomilous/nezkit.git",
-    "branch": "refs/heads/develop",
-    "ref": "98b4dc621d597dabd37188668c0dd8b362eb2b0e"
-  },
-  {
-    "root": false,
-    "path": "./node_modules/nezkit/node_modules/nez",
-    "origin": "git@github.com:nomilous/nez.git",
-    "branch": "refs/heads/develop",
-    "ref": "99b80a08b6ab9fcd338bad6eb0c71214b74b7a50"
-  },
-  {
-    "root": false,
-    "path": "./node_modules/nezkit/node_modules/nez/node_modules/eo",
-    "origin": "git@github.com:nomilous/eo.git",
-    "branch": "refs/heads/master",
-    "ref": "a577e407874d6bc5d71b12f171dbd3c01627b2df"
-  },
-  {
-    "root": false,
-    "path": "./node_modules/nezkit/node_modules/nez/node_modules/eo/node_modules/nezcore",
-    "origin": "git@github.com:nomilous/nezcore.git",
-    "branch": "refs/heads/master",
-    "ref": "0b203f11d3c0a9b114321e055541c47ab0723892"
-  },
-  {
-    "root": false,
-    "path": "./node_modules/nezkit/node_modules/nez/node_modules/ipso",
-    "origin": "git@github.com:nomilous/ipso.git",
-    "branch": "refs/heads/develop",
-    "ref": "075b3cb02d99df998eb18544520961c51ca4b8af"
-  },
-  {
-    "root": false,
-    "path": "./node_modules/nezkit/node_modules/nez/node_modules/nezcore",
-    "origin": "git@github.com:nomilous/nezcore.git",
-    "branch": "refs/heads/master",
-    "ref": "0b203f11d3c0a9b114321e055541c47ab0723892"
+    "branch": "refs/heads/feature/modules",
+    "ref": "155f4e09647a2aa0fa80ff3f66c7f9343659a437"
   }
 ]
