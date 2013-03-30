@@ -4,6 +4,18 @@ git-seed
 [objective](https://github.com/nomilous/git-seed/blob/master/objective)
 
 
+### Disclaimers
+
+I made this thing because I was losing a lot of time to the infrastructual overheads involved in developing inside a tree of interdependant and often not yet released node modules and submodules.<br />
+
+I needed **A VERY SIMPLE WAY** to keep a handle across multiple nested git repositories.<br />
+
+**I have not examined what happens when you do not gitignore you node_modules folder**<br />
+
+**Not windows friendly** - it may do unexpected things to your repo - i dont know what things<br />
+
+
+
 ### Current version 
 
 0.0.3
