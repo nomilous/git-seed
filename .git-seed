@@ -3,7 +3,7 @@
     "root": true,
     "path": ".",
     "origin": "git@github.com:nomilous/git-seed.git",
-    "branch": "refs/heads/develop",
+    "branch": "refs/heads/master",
     "ref": "ROOT_REPO_REF",
     "manager": "npm"
   }
