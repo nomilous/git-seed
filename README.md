@@ -268,3 +268,26 @@ nothing to commit (working directory clean)
 
 ```
 
+
+### Step 6 - pull
+
+* This first pulls the root repo to get the latest `.git-seed` control file
+* Then it pulls all the nested repos.
+* It will skip pulling in a nested repo if the local clone **is already at the version specified** or **is on a different branch** in the `.git-seed`
+* It runs `npm install` once all is pulled.
+
+```bash
+> git seed pull
+(pull) pull all where necessary . 
+
+(run) git pull git@github.com:nomilous/git-seed.git refs/heads/develop (in .)
+From github.com:nomilous/git-seed
+ * branch            develop    -> FETCH_HEAD
+Already up-to-date.
+(skip) ./node_modules/git-seed-npm already up-to-date with .git-seed
+(skip) ./node_modules/git-seed-npm/node_modules/git-seed-core already up-to-date with .git-seed
+(run) npm install (in .)
+(run) npm install (in ./node_modules/git-seed-npm)
+(run) npm install (in ./node_modules/git-seed-npm/node_modules/git-seed-core)
+
+```

@@ -5,6 +5,17 @@ program.option '    --package-manager [package_manager]',  'Calls package manage
 program.option '-m, --message         [commit_message]',   'Specify commit message'
 
 
+
+#
+# TODO: Scaled deployability and content distribution (proxy trees).
+#
+
+program.option '-d, --as-daemon       [config_file]',    '[NOT YET IMPLEMENTED] Run as a daemon.'
+program.option '-p, --as-proxy        [config_file]',    '[NOT YET IMPLEMENTED] Run as a distribution proxy.'
+
+
+
+
 program
     .command('init')
     .description('Assemble the initial .nez_tree control file into [root]')
@@ -40,25 +51,10 @@ program
     .description('[PENDING (maybe)] Attach console to github rss feeds for all nested repos')
     .action -> GitAction.assign(program).push arguments
 
-
-
-
-
-#
-# TODO: Scaled deployability and content distribution (proxy trees).
-#
-
-program.option '-d, --as-daemon       [config_file]',    '[NOT YET IMPLEMENTED] Run as a daemon.'
-program.option '-p, --as-proxy        [config_file]',    '[NOT YET IMPLEMENTED] Run as a distribution proxy.'
-
-
-
-
-
-
 program.parse process.argv
 
 if GitAction.error
 
     GitAction.showError()
     process.exit 1
+
