@@ -11,7 +11,6 @@ git-seed
 ### Pending functionality
 
 * push across all nested repos with commits pending
-* pull across all repos
 
 ### Install
 

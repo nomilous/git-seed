@@ -6,13 +6,5 @@
     "branch": "refs/heads/develop",
     "ref": "ROOT_REPO_REF",
     "manager": "npm"
-  },
-  {
-    "root": false,
-    "path": "./node_modules/git-seed-npm",
-    "origin": "git@github.com:nomilous/git-seed-npm.git",
-    "branch": "refs/heads/master",
-    "ref": "ad01403e3178c3a89db679258f807f4b8b198979",
-    "manager": "npm"
   }
 ]
