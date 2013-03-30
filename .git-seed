@@ -14,13 +14,5 @@
     "branch": "refs/heads/master",
     "ref": "ad01403e3178c3a89db679258f807f4b8b198979",
     "manager": "npm"
-  },
-  {
-    "root": false,
-    "path": "./node_modules/git-seed-npm/node_modules/git-seed-core",
-    "origin": "git@github.com:nomilous/git-seed-core.git",
-    "branch": "refs/heads/master",
-    "ref": "fc4648214d447d071d1c9c5f8126d300ec60cecb",
-    "manager": "npm"
   }
 ]
