@@ -273,8 +273,8 @@ nothing to commit (working directory clean)
 
 * This first pulls the root repo to get the latest `.git-seed` control file
 * Then it pulls all the nested repos.
-* It will skip pulling in a nested repo if the local clone **is already at the version specified** or **is on a different branch** in the `.git-seed`
-* It runs `npm install` once all is pulled.
+* Before pulling a nested repo a comparison is made against the `.git-seed` file. Pulls are skipped if the local clone **is already at the version specified** or **is on a different branch**.
+* It runs `npm install` across all repos once the pulls are complete.
 
 ```bash
 > git seed pull
