@@ -34,7 +34,7 @@ To use an alternative:
 sudo npm install git-seed-bundler -g
 
 #
-# seed initialization can the specify
+# seed initialization can then specify
 #
 
 git seed --package-manager bundler init 
@@ -291,3 +291,9 @@ Already up-to-date.
 (run) npm install (in ./node_modules/git-seed-npm/node_modules/git-seed-core)
 
 ```
+
+
+### Step 7 - push
+
+Herein lies intricacy... *Thinking*
+
