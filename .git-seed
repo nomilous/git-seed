@@ -22,13 +22,5 @@
     "branch": "refs/heads/master",
     "ref": "fc4648214d447d071d1c9c5f8126d300ec60cecb",
     "manager": "npm"
-  },
-  {
-    "root": false,
-    "path": "./node_modules/nezkit",
-    "origin": "git@github.com:nomilous/nezkit.git",
-    "branch": "refs/heads/feature/modules",
-    "ref": "18fdf781a82383aac9e1b8800eb7fbae2936d3c4",
-    "manager": "npm"
   }
 ]
