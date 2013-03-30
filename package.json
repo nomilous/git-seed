@@ -1,7 +1,7 @@
 {
   "name": "git-seed",
   "description": "Git plugin to easily create, manage and replicate a composite clone",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "nomilous <nomilous@gmail.com>",
   "contributors": [
     {
