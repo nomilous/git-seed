@@ -119,11 +119,13 @@ module.exports = GitAction =
 
     pull: -> 
 
-        console.log '(pull)'.bold, 'pull root repo', GitAction.root, '\n'
+        console.log '(pull)'.bold, 'pull all where necessary', GitAction.root, '\n'
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.root, GitAction.plugin).pull null, (error, result) -> 
+        seed = new GitSeed GitAction.root, GitAction.plugin
+
+        seed.pull null, (error, result) -> 
 
             #
             # First call to pull with a null fetches only the root repo
@@ -141,8 +143,6 @@ module.exports = GitAction =
             # and recall to pull all nested repos
             # 
 
-            console.log '(pull)'.bold, 'all nested repos'
-
             seed = new GitSeed GitAction.root, GitAction.plugin
             seed.pull seed, (error, result) -> 
 
@@ -151,13 +151,7 @@ module.exports = GitAction =
                     console.log '(error) '.red + error.toString()
                     process.exit 10
 
-
-        process.exit 0
-
-      
-        #
-        # then pull all with ref differing from .git-seed
-        #
+                process.exit 0
 
         #
         # then package manager install on all
