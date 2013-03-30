@@ -10,9 +10,9 @@ I made this thing because I was losing a lot of time to the infrastructual overh
 
 I needed **A VERY SIMPLE WAY** to keep a handle across multiple nested git repositories.<br />
 
-**I have not examined what happens when you do not gitignore you node_modules folder**<br />
+**I have not examined what happens when you do not gitignore your node_modules folder**<br />
 
-**Not windows friendly** - it may do unexpected things to your repo - i dont know what things<br />
+**NOT WINDOWS FRIENDLY** - it may do unexpected things to your repo - i dont know what things - just that i took one or two irresponsible shortcuts... [eg.](https://github.com/nomilous/git-seed-core/blob/master/src/shell.coffee#L22) <br />
 
 
 
