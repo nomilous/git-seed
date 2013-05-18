@@ -1,6 +1,7 @@
 colors  = require 'colors'
 GitSeed = require('nezkit').seed
 fs      = require 'fs'
+w       = require 'when'
 
 module.exports = GitAction =
 
@@ -21,11 +22,19 @@ module.exports = GitAction =
 
     error: 'unknown or missing command'
 
-    assign: (program) ->
+    assign: (program, onSuccess, onError, onNotify) ->
 
-        GitAction.root    = '.' 
-        GitAction.message = program.message
-        plugin            = program.packageManager || 'npm'
+        if (
+
+            typeof onSuccess == 'undefined' or 
+            typeof onError == 'undefined'
+
+        ) then throw new Error 'requires promise handlers'
+
+        GitAction.deferral = w.defer()
+        GitAction.root     = '.' 
+        GitAction.message  = program.message
+        plugin             = program.packageManager || 'npm'
 
         try
 

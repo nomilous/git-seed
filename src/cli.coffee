@@ -19,7 +19,14 @@ program.option '-p, --as-proxy        [config_file]',    '[NOT YET IMPLEMENTED] 
 program
     .command('init')
     .description('Assemble the initial .nez_tree control file into [root]')
-    .action -> GitAction.assign(program).init arguments
+    .action -> GitAction.assign(
+
+        program
+        success = -> 
+        error   = -> 
+        notify  = ->
+
+    ).init arguments
 
 program
     .command('status')

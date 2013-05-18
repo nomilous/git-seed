@@ -1,11 +1,43 @@
 require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -> 
 
+    context 'assign()', (it) -> 
+
+        it 'expects promise handlers', (done) -> 
+
+            try 
+
+                GitAction.assign( root: '.' )
+
+            catch error
+
+                error.should.match /requires promise handlers/
+                test done
+
+
+        it 'promises a result', (done) -> 
+
+            GitAction.assign( 
+                root: '.'
+                -> 
+                ->
+            )
+            should.exist GitAction.deferral
+            test done
+
+
     context 'init()', (performs) -> 
 
         performs 'the seed inititialize', (done) -> 
 
             nezkit.seed.init = -> test done 
-            GitAction.assign( root: '.' ).init()
+            GitAction.assign( 
+                root: '.' 
+                ->
+                ->
+
+            ).init()
+
+            
 
 
     context 'clone()', (performs) ->
@@ -25,7 +57,12 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
         performs 'git clone of the seed repos', (done) ->
 
             nezkit.seed.prototype.clone = -> test done
-            GitAction.assign( root: '.' ).clone()
+            GitAction.assign( 
+                root: '.' 
+                ->
+                ->
+
+            ).clone()
 
 
     context 'status()', (shows) -> 
@@ -33,7 +70,11 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
         shows 'git status of the tree', (done) ->  
 
             nezkit.seed.prototype.status = -> test done 
-            GitAction.assign( root: '.' ).status()
+            GitAction.assign( 
+                root: '.' 
+                ->
+                ->
+            ).status()
 
 
 
