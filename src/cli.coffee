@@ -17,7 +17,14 @@ program.option '-p, --as-proxy        [config_file]',    '[NOT YET IMPLEMENTED] 
 
 noNotify = (status) -> 
 
-    console.log status.context.bold, status.message
+    if status.cli.context == 'good'
+        console.log "(#{status.cli.event})".bold.green, status.cli.detail
+
+    else if status.cli.context == 'bad'
+        console.log "(#{status.cli.event})".bold.red, status.cli.detail
+        
+    else 
+        console.log "(#{status.cli.event})".bold, status.cli.detail
 
 
 program

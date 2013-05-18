@@ -61,8 +61,13 @@ module.exports = GitAction =
 
         GitAction.deferral.notify 
 
-            context: 'init'
-            message: "scanning for git repositories in '#{ GitAction.root }'"
+            #
+            # notification framework later
+            #
+
+            cli:
+                event: 'init'
+                detail: "scanning for git repositories in '#{ GitAction.root }'"
 
         
         GitAction.error = ''  # ???
@@ -71,6 +76,7 @@ module.exports = GitAction =
 
             GitAction.deferral.reject new Error "no git reposititory in '#{ GitAction.root }'"
             return
+
 
         GitSeed.init GitAction.root, GitAction.plugin, GitAction.deferral
 
