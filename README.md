@@ -11,6 +11,7 @@ git-seed
 ### Pending functionality
 
 * push across all nested repos with commits pending
+* `git-seed deployment` (as service, always up-to-date, with deplyment key and secure socket listening for toggle: rollout/fallback) 
 
 ### Install
 
