@@ -15,16 +15,62 @@ program.option '-d, --as-daemon       [config_file]',    '[NOT YET IMPLEMENTED] 
 program.option '-p, --as-proxy        [config_file]',    '[NOT YET IMPLEMENTED] Run as a distribution proxy.'
 
 
-noNotify = (status) -> 
+try 
 
-    if status.cli.context == 'good'
-        console.log "(#{status.cli.event})".bold.green, status.cli.detail
+    #
+    # facilities for personal notification routing / console output preferences
+    # 
 
-    else if status.cli.context == 'bad'
-        console.log "(#{status.cli.event})".bold.red, status.cli.detail
-        
-    else 
-        console.log "(#{status.cli.event})".bold, status.cli.detail
+    onNotify  = require('my_notifiers').gitSeed.onNotify
+    onError   = require('my_notifiers').gitSeed.onError
+    onSuccess = require('my_notifiers').gitSeed.onSuccess
+
+    #
+    # note: 'my_notifiers' does not exist (as far as i know / yet) 
+    #       
+    #       but that does not mean the package can't be defined 
+    #       globally locally, and implement:
+    # 
+    #       module.exports = 
+    # 
+    #           gitSeed: 
+    # 
+    #               onSuccess: (result) -> 
+    #                   # 
+    #                   # whatever 
+    #                   # 
+    # 
+    #               onError: (reason) -> 
+    #          
+    #                   # 
+    #                   # whatever 
+    #                   # 
+    # 
+    #               onNotify: (status) -> 
+    #                   # 
+    #                   # whatever 
+    #                   # 
+    # 
+
+catch error
+
+    #
+    # or it just prints to console
+    # (without much care for console configuration incompatabilities)
+    # 
+
+    onSuccess = (result) -> 
+    onError   = (reason) -> 
+    onNotify  = (status) -> 
+
+        if status.cli.context == 'good'
+            console.log "(#{status.cli.event})".bold.green, status.cli.detail
+
+        else if status.cli.context == 'bad'
+            console.log "(#{status.cli.event})".bold.red, status.cli.detail
+
+        else 
+            console.log "(#{status.cli.event})".bold, status.cli.detail
 
 
 program
@@ -35,9 +81,9 @@ program
         GitAction.configure(
 
             program
-            success = -> 
-            error   = -> 
-            noNotify
+            onSuccess
+            onError
+            onNotify
 
         ).init arguments
 
@@ -49,9 +95,9 @@ program
         GitAction.configure(
 
             program
-            success = -> 
-            error   = -> 
-            noNotify
+            onSuccess
+            onError
+            onNotify
 
         ).status arguments
 
@@ -68,9 +114,9 @@ program
         GitAction.configure(
 
             program
-            success = -> 
-            error   = -> 
-            noNotify
+            onSuccess
+            onError
+            onNotify
 
         ).commit arguments
 
@@ -82,9 +128,9 @@ program
         GitAction.configure(
 
             program
-            success = -> 
-            error   = -> 
-            noNotify
+            onSuccess
+            onError
+            onNotify
 
         ).pull arguments
 
@@ -96,9 +142,9 @@ program
         GitAction.configure(
 
             program
-            success = -> 
-            error   = -> 
-            noNotify
+            onSuccess
+            onError
+            onNotify
 
         ).push arguments
 
