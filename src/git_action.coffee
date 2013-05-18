@@ -57,7 +57,6 @@ module.exports = GitAction =
     init: -> 
 
         if typeof GitAction.deferral == 'undefined' 
-
             throw new Error 'configure() was not called'
 
         GitAction.deferral.notify 
@@ -70,7 +69,7 @@ module.exports = GitAction =
 
         unless GitAction.gotDirectory GitAction.root + '/.git'
 
-            GitAction.deferral.reject new Error 'no git reposititory in ' + GitAction.root
+            GitAction.deferral.reject new Error "no git reposititory in '#{ GitAction.root }'"
             return
 
         GitSeed.init GitAction.root, GitAction.plugin, GitAction.deferral
@@ -78,96 +77,111 @@ module.exports = GitAction =
 
     status: ->
 
-        console.log '(status)'.bold, 'for all expected repositories in', GitAction.root, '\n'
+        if typeof GitAction.deferral == 'undefined' 
+            throw new Error 'configure() was not called'
 
-        GitAction.error = ''
+        # console.log '(status)'.bold, 'for all expected repositories in', GitAction.root, '\n'
 
-        try
+        # GitAction.error = ''
 
-            (new GitSeed GitAction.root, GitAction.plugin).status()
+        # try
 
-        catch error
+        #     (new GitSeed GitAction.root, GitAction.plugin).status()
 
-            console.log '(error) '.red + error.toString()
-            process.exit 3
+        # catch error
+
+        #     console.log '(error) '.red + error.toString()
+        #     process.exit 3
 
 
     clone: ->
 
-        console.log '(clone)'.bold, 'all missing repositories in', GitAction.root, '\n'
+        if typeof GitAction.deferral == 'undefined' 
+            throw new Error 'configure() was not called'
 
-        GitAction.error = ''
+        # console.log '(clone)'.bold, 'all missing repositories in', GitAction.root, '\n'
 
-        seed = new GitSeed GitAction.root, GitAction.plugin
-        seed.clone (error, result) ->
+        # GitAction.error = ''
 
-            if error
+        # seed = new GitSeed GitAction.root, GitAction.plugin
+        # seed.clone (error, result) ->
 
-                console.log '(error) '.red + error.toString()
-                process.exit 4
+        #     if error
 
-            process.exit 0
+        #         console.log '(error) '.red + error.toString()
+        #         process.exit 4
+
+        #     process.exit 0
 
 
     commit: -> 
 
-        console.log '(commit)'.bold, 'on all repositories', 'with staged changes'.bold, 'in', GitAction.root, '\n'
+        if typeof GitAction.deferral == 'undefined' 
+            throw new Error 'configure() was not called'
 
-        GitAction.error = ''
+        # console.log '(commit)'.bold, 'on all repositories', 'with staged changes'.bold, 'in', GitAction.root, '\n'
 
-        (new GitSeed GitAction.root, GitAction.plugin).commit GitAction.message, (error, result) ->
+        # GitAction.error = ''
 
-            if error
+        # (new GitSeed GitAction.root, GitAction.plugin).commit GitAction.message, (error, result) ->
 
-                console.log '(error) '.red + error.toString()
-                process.exit 6
+        #     if error
 
-            process.exit 0
+        #         console.log '(error) '.red + error.toString()
+        #         process.exit 6
+
+        #     process.exit 0
 
 
 
     push: -> 
 
-        GitAction.error = ''
-        process.exit 6
-        process.exit 7
+        if typeof GitAction.deferral == 'undefined' 
+            throw new Error 'configure() was not called'
+
+        # GitAction.error = ''
+        # process.exit 6
+        # process.exit 7
         
 
     pull: -> 
 
-        console.log '(pull)'.bold, 'pull all where necessary', GitAction.root, '\n'
+        if typeof GitAction.deferral == 'undefined' 
+            throw new Error 'configure() was not called'
 
-        GitAction.error = ''
+        # console.log '(pull)'.bold, 'pull all where necessary', GitAction.root, '\n'
 
-        seed = new GitSeed GitAction.root, GitAction.plugin
+        # GitAction.error = ''
 
-        seed.pull null, (error, result) -> 
+        # seed = new GitSeed GitAction.root, GitAction.plugin
 
-            #
-            # First call to pull with a null fetches only the root repo
-            # to get the latest .git-seed file
-            #
+        # seed.pull null, (error, result) -> 
 
-            if error
+        #     #
+        #     # First call to pull with a null fetches only the root repo
+        #     # to get the latest .git-seed file
+        #     #
 
-                console.log '(error) '.red + error.toString()
-                process.exit 9
+        #     if error
+
+        #         console.log '(error) '.red + error.toString()
+        #         process.exit 9
 
 
-            #
-            # load the seed packages again (now with the latest .git-seed)
-            # and recall to pull all nested repos
-            # 
+        #     #
+        #     # load the seed packages again (now with the latest .git-seed)
+        #     # and recall to pull all nested repos
+        #     # 
 
-            seed = new GitSeed GitAction.root, GitAction.plugin
-            seed.pull seed, (error, result) -> 
+        #     seed = new GitSeed GitAction.root, GitAction.plugin
+        #     seed.pull seed, (error, result) -> 
 
-                if error
+        #         if error
 
-                    console.log '(error) '.red + error.toString()
-                    process.exit 10
+        #             console.log '(error) '.red + error.toString()
+        #             process.exit 10
 
-                process.exit 0
+        #         process.exit 0
 
         #
         # then package manager install on all

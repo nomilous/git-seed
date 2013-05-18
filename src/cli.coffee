@@ -15,24 +15,38 @@ program.option '-d, --as-daemon       [config_file]',    '[NOT YET IMPLEMENTED] 
 program.option '-p, --as-proxy        [config_file]',    '[NOT YET IMPLEMENTED] Run as a distribution proxy.'
 
 
+noNotify = (status) -> 
+
+    console.log status.context.bold, status.message
 
 
 program
     .command('init')
     .description('Assemble the initial .nez_tree control file into [root]')
-    .action -> GitAction.configure(
+    .action -> 
+
+        GitAction.configure(
 
             program
             success = -> 
             error   = -> 
-            notify  = (status) -> console.log status.context.bold, status.message
+            noNotify
 
         ).init arguments
 
 program
     .command('status')
     .description('Git status across all nested git repos')
-    .action -> GitAction.assign(program).status arguments
+    .action -> 
+
+        GitAction.configure(
+
+            program
+            success = -> 
+            error   = -> 
+            noNotify
+
+        ).status arguments
 
 program
     .command('clone')
@@ -42,22 +56,50 @@ program
 program 
     .command('commit')
     .description('Git commit across all nested repos with staged changes.')
-    .action -> GitAction.assign(program).commit arguments
+    .action -> 
+
+        GitAction.configure(
+
+            program
+            success = -> 
+            error   = -> 
+            noNotify
+
+        ).commit arguments
 
 program
     .command('pull')
     .description('Git pull across all nested git repos.')
-    .action -> GitAction.assign(program).pull arguments
+    .action -> 
+
+        GitAction.configure(
+
+            program
+            success = -> 
+            error   = -> 
+            noNotify
+
+        ).pull arguments
 
 program
     .command('push')
     .description('[PENDING] Git push across all nested git repos (per .git-seed)')
-    .action -> GitAction.assign(program).push arguments
+    .action -> 
+
+        GitAction.configure(
+
+            program
+            success = -> 
+            error   = -> 
+            noNotify
+
+        ).push arguments
 
 program
     .command('watch')
     .description('[PENDING (maybe)] Attach console to github rss feeds for all nested repos')
-    .action -> GitAction.assign(program).push arguments
+    .action -> 
+
 
 program.parse process.argv
 
