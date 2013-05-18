@@ -6,7 +6,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
 
             try 
 
-                GitAction.assign( root: '.' )
+                GitAction.configure( root: '.' )
 
             catch error
 
@@ -16,7 +16,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
 
         it 'promises a result', (done) -> 
 
-            GitAction.assign( 
+            GitAction.configure( 
                 root: '.'
                 -> 
                 ->
@@ -25,19 +25,30 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
             test done
 
 
-    context 'init()', (performs) -> 
+    context 'init()', (it) -> 
 
-        performs 'the seed inititialize', (done) -> 
+        it 'performs the seed inititialize', (done) -> 
 
             nezkit.seed.init = -> test done 
-            GitAction.assign( 
+            GitAction.configure( 
                 root: '.' 
                 ->
                 ->
 
             ).init()
 
-            
+
+        it 'passes the deferral onto the seed class', (done) -> 
+
+            nezkit.seed.init = -> 
+                arguments[2].should.equal GitAction.deferral
+                test done
+
+            GitAction.configure( 
+                root: '.' 
+                ->
+                ->
+            ).init()
 
 
     context 'clone()', (performs) ->
@@ -57,7 +68,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
         performs 'git clone of the seed repos', (done) ->
 
             nezkit.seed.prototype.clone = -> test done
-            GitAction.assign( 
+            GitAction.configure( 
                 root: '.' 
                 ->
                 ->
@@ -70,7 +81,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
         shows 'git status of the tree', (done) ->  
 
             nezkit.seed.prototype.status = -> test done 
-            GitAction.assign( 
+            GitAction.configure( 
                 root: '.' 
                 ->
                 ->

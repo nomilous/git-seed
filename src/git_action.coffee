@@ -1,4 +1,5 @@
 colors  = require 'colors'
+console.log 'remove colors'
 GitSeed = require('nezkit').seed
 fs      = require 'fs'
 w       = require 'when'
@@ -22,7 +23,9 @@ module.exports = GitAction =
 
     error: 'unknown or missing command'
 
-    assign: (program, onSuccess, onError, onNotify) ->
+
+    assign: -> GitAction.configure  #DEPRECATE
+    configure: (program, onSuccess, onError, onNotify) ->
 
         if (
 
@@ -32,6 +35,9 @@ module.exports = GitAction =
         ) then throw new Error 'requires promise handlers'
 
         GitAction.deferral = w.defer()
+        GitAction.deferral.promise.then onSuccess, onError, onNotify
+
+
         GitAction.root     = '.' 
         GitAction.message  = program.message
         plugin             = program.packageManager || 'npm'
@@ -50,23 +56,24 @@ module.exports = GitAction =
 
     init: -> 
 
-        console.log '(init)'.bold, 'scanning for git repositories in', GitAction.root, '\n'
+        if typeof GitAction.deferral == 'undefined' 
 
-        GitAction.error = ''
+            throw new Error 'configure() was not called'
 
-        try
+        GitAction.deferral.notify 
 
-            unless GitAction.gotDirectory GitAction.root + '/.git'
+            context: 'init'
+            message: "scanning for git repositories in '#{ GitAction.root }'"
 
-                console.log '(fail)'.red, 'no git reposititory in', GitAction.root, '\n'
-                process.exit 2
+        
+        GitAction.error = ''  # ???
 
-            GitSeed.init GitAction.root, GitAction.plugin
+        unless GitAction.gotDirectory GitAction.root + '/.git'
 
-        catch error
+            GitAction.deferral.reject new Error 'no git reposititory in ' + GitAction.root
+            return
 
-            console.log '(error) '.red + error.toString()
-            process.exit 3
+        GitSeed.init GitAction.root, GitAction.plugin, GitAction.deferral
 
 
     status: ->

@@ -1,4 +1,5 @@
 program   = require 'commander'
+colors    = require 'colors'
 GitAction = require './git_action'
 
 program.option '    --package-manager [package_manager]',  'Calls package manager after each clone/pull (default npm)'       
@@ -19,14 +20,14 @@ program.option '-p, --as-proxy        [config_file]',    '[NOT YET IMPLEMENTED] 
 program
     .command('init')
     .description('Assemble the initial .nez_tree control file into [root]')
-    .action -> GitAction.assign(
+    .action -> GitAction.configure(
 
-        program
-        success = -> 
-        error   = -> 
-        notify  = ->
+            program
+            success = -> 
+            error   = -> 
+            notify  = (status) -> console.log status.context.bold, status.message
 
-    ).init arguments
+        ).init arguments
 
 program
     .command('status')
