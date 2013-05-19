@@ -1,34 +1,34 @@
 [
   {
-    "root": false,
-    "path": "./node_modules/git-seed-npm/node_modules/git-seed-core",
+    "root": true,
+    "path": ".",
     "manager": "npm",
-    "origin": "git@github.com:nomilous/git-seed-core.git",
+    "origin": "git@github.com:nomilous/git-seed.git",
     "branch": "refs/heads/develop",
-    "version": "66abda10b3172dd57f56aeb8189e01029252bb0f"
-  },
-  {
-    "root": false,
-    "path": "./node_modules/nezkit",
-    "manager": "npm",
-    "branch": "refs/heads/develop",
-    "version": "9bc686e797b92ae6ac821baca0be68c6b5c42b9f",
-    "origin": "git@github.com:nomilous/nezkit.git"
+    "ref": "ROOT_REPO_REF"
   },
   {
     "root": false,
     "path": "./node_modules/git-seed-npm",
     "manager": "npm",
+    "origin": "git@github.com:nomilous/git-seed-npm.git",
     "branch": "refs/heads/develop",
-    "version": "f9a5fba18db857481f1ee5e22304b6770a31b252",
-    "origin": "git@github.com:nomilous/git-seed-npm.git"
+    "ref": "f9a5fba18db857481f1ee5e22304b6770a31b252"
   },
   {
-    "root": true,
-    "path": ".",
+    "root": false,
+    "path": "./node_modules/git-seed-npm/node_modules/git-seed-core",
     "manager": "npm",
+    "origin": "git@github.com:nomilous/git-seed-core.git",
     "branch": "refs/heads/develop",
-    "version": "d90a591c8b3e0ec72d7f24ca5f7955c6df86d7de",
-    "origin": "git@github.com:nomilous/git-seed.git"
+    "ref": "af8fe19b3640d40d5a5baadffbe9b91bf11b484e"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/nezkit",
+    "manager": "npm",
+    "origin": "git@github.com:nomilous/nezkit.git",
+    "branch": "refs/heads/develop",
+    "ref": "de6013705719c825c83b8c9a7f41126b326a0e75"
   }
 ]
