@@ -70,7 +70,7 @@ module.exports = GitAction =
                 detail: "scanning for git repositories in '#{ GitAction.root }'"
 
         
-        GitAction.error = ''  # ???
+        GitAction.error = ''
 
         unless GitAction.gotDirectory GitAction.root + '/.git'
 
@@ -86,9 +86,16 @@ module.exports = GitAction =
         if typeof GitAction.deferral == 'undefined' 
             throw new Error 'configure() was not called'
 
-        # console.log '(status)'.bold, 'for all expected repositories in', GitAction.root, '\n'
+        GitAction.deferral.notify 
 
-        # GitAction.error = ''
+            cli:
+                event: 'status'
+                detail: "for all expected repositories in '#{ GitAction.root }'"
+
+        GitAction.error = ''
+
+
+        (new GitSeed GitAction.root, GitAction.plugin, GitAction.deferral).status()
 
         # try
 
