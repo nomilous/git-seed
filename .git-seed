@@ -29,6 +29,14 @@
     "manager": "npm",
     "origin": "git@github.com:nomilous/nezkit.git",
     "branch": "refs/heads/develop",
-    "ref": "bc9603d89a0d0a67f54d6da25eff8f388c9976e1"
+    "ref": "77feafe8b3afcd15efbf131c7e43ed20888635f7"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/notice",
+    "manager": "npm",
+    "origin": "git@github.com:nomilous/notice.git",
+    "branch": "refs/heads/develop",
+    "ref": "0dbe59ac0d104d5915701c0de8bf634418af09f9"
   }
 ]
