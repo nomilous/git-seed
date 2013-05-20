@@ -2,6 +2,16 @@ program   = require 'commander'
 colors    = require 'colors'
 GitAction = require './git_action'
 
+notice    = require 'notice'
+notice.configure messenger: require 'notice-cli'
+
+
+notice 'TEST MESSAGE'
+
+return
+
+
+
 program.option '    --package-manager [package_manager]',  'Calls package manager after each clone/pull (default npm)'       
 program.option '-m, --message         [commit_message]',   'Specify commit message'
 
@@ -64,13 +74,16 @@ catch error
     onNotify  = (status) -> 
 
         if status.cli.context == 'good'
-            console.log "(#{status.cli.event})".bold.green, status.cli.detail
+            console.log "(#{status.cli.event})".green, status.cli.detail
+
+        else if status.cli.event == 'output'
+            console.log status.cli.detail
 
         else if status.cli.context == 'bad'
             console.log "(#{status.cli.event})".bold.red, status.cli.detail
 
         else 
-            console.log "(#{status.cli.event})".bold, status.cli.detail
+            console.log "[#{status.cli.event}]", status.cli.detail
 
 
 program
@@ -104,7 +117,16 @@ program
 program
     .command('clone')
     .description('Git clone all missing nested git repos')
-    .action -> GitAction.assign(program).clone arguments
+    .action -> 
+
+        GitAction.configure(
+
+            program
+            onSuccess
+            onError
+            onNotify
+
+        ).clone arguments
 
 program 
     .command('commit')
