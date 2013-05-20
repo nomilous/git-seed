@@ -38,5 +38,13 @@
     "origin": "git@github.com:nomilous/notice.git",
     "branch": "refs/heads/develop",
     "ref": "0dbe59ac0d104d5915701c0de8bf634418af09f9"
+  },
+  {
+    "root": false,
+    "path": "./node_modules/notice-cli",
+    "manager": "npm",
+    "origin": "git@github.com:nomilous/notice-cli.git",
+    "branch": "refs/heads/develop",
+    "ref": "4e862e4f1d72c7bb6a1127df7e3301c01a0762ee"
   }
 ]
