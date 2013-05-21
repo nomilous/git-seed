@@ -3,13 +3,9 @@ colors    = require 'colors'
 GitAction = require './git_action'
 
 notice    = require 'notice'
-notice.configure messenger: require 'notice-cli'
-
-
-notice 'TEST MESSAGE'
-
-return
-
+notice.configure
+    source: 'git-seed'
+    messenger: require 'notice-cli'
 
 
 program.option '    --package-manager [package_manager]',  'Calls package manager after each clone/pull (default npm)'       
@@ -96,7 +92,7 @@ program
             program
             onSuccess
             onError
-            onNotify
+            notice
 
         ).init arguments
 
@@ -110,7 +106,7 @@ program
             program
             onSuccess
             onError
-            onNotify
+            notice
 
         ).status arguments
 
@@ -124,7 +120,7 @@ program
             program
             onSuccess
             onError
-            onNotify
+            notice
 
         ).clone arguments
 
@@ -138,7 +134,7 @@ program
             program
             onSuccess
             onError
-            onNotify
+            notice
 
         ).commit arguments
 
@@ -152,7 +148,7 @@ program
             program
             onSuccess
             onError
-            onNotify
+            notice
 
         ).pull arguments
 
@@ -166,7 +162,7 @@ program
             program
             onSuccess
             onError
-            onNotify
+            notice
 
         ).push arguments
 
