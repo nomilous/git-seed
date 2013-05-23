@@ -129,7 +129,7 @@ program
 # 
 # program
 #     .command('watch')
-#     .description('Attach console to github rss feeds for all repos in .git-seed')
+#     .description('[PENDING] Attach console to github rss feeds for all repos in .git-seed')
 #     .action -> 
 #
 #         GitAction.configure(
