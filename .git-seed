@@ -37,7 +37,7 @@
     "manager": "npm",
     "origin": "git@github.com:nomilous/notice.git",
     "branch": "refs/heads/develop",
-    "ref": "180ac362103e0f8ce375c909388579dc01c5e249"
+    "ref": "a45e46aa73076cbe1d05cb71aa89e04fa418d887"
   },
   {
     "root": false,
@@ -45,6 +45,6 @@
     "manager": "npm",
     "origin": "git@github.com:nomilous/notice-cli.git",
     "branch": "refs/heads/develop",
-    "ref": "15dd51cbc69257f843a7ad5968faf1c53735ea62"
+    "ref": "42eb9bbf1fc093f4ba77df992254c99300948660"
   }
 ]
