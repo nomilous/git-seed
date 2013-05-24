@@ -1,20 +1,50 @@
 [
   {
-    "repo": 0
+    "root": true,
+    "path": ".",
+    "manager": "npm",
+    "origin": "git@github.com:nomilous/git-seed.git",
+    "branch": "refs/heads/develop",
+    "ref": "ROOT_REPO_REF"
   },
   {
-    "repo": 1
+    "root": false,
+    "path": "./node_modules/git-seed-npm",
+    "manager": "npm",
+    "origin": "git@github.com:nomilous/git-seed-npm.git",
+    "branch": "refs/heads/develop",
+    "ref": "f6c0e147a7d9b4085232686112cc77225b65f0b9"
   },
   {
-    "repo": 2
+    "root": false,
+    "path": "./node_modules/git-seed-npm/node_modules/git-seed-core",
+    "manager": "npm",
+    "origin": "git@github.com:nomilous/git-seed-core.git",
+    "branch": "refs/heads/develop",
+    "ref": "b371c0c5680a00f1da1b1ec1824e33100f713abf"
   },
   {
-    "repo": 3
+    "root": false,
+    "path": "./node_modules/nezkit",
+    "manager": "npm",
+    "origin": "git@github.com:nomilous/nezkit.git",
+    "branch": "refs/heads/develop",
+    "ref": "acf9e6255f1d6f96b30b98178dd1742ef1f3cea6"
   },
   {
-    "repo": 4
+    "root": false,
+    "path": "./node_modules/notice",
+    "manager": "npm",
+    "origin": "git@github.com:nomilous/notice.git",
+    "branch": "refs/heads/develop",
+    "ref": "a45e46aa73076cbe1d05cb71aa89e04fa418d887"
   },
   {
-    "repo": 5
+    "root": false,
+    "path": "./node_modules/notice-cli",
+    "manager": "npm",
+    "origin": "git@github.com:nomilous/notice-cli.git",
+    "branch": "refs/heads/develop",
+    "ref": "42eb9bbf1fc093f4ba77df992254c99300948660"
   }
 ]
