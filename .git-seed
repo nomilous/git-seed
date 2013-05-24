@@ -21,7 +21,7 @@
     "manager": "npm",
     "origin": "git@github.com:nomilous/git-seed-core.git",
     "branch": "refs/heads/develop",
-    "ref": "b371c0c5680a00f1da1b1ec1824e33100f713abf"
+    "ref": "b06cad2f2a4e54888f37e805d1687ad403234604"
   },
   {
     "root": false,
@@ -29,7 +29,7 @@
     "manager": "npm",
     "origin": "git@github.com:nomilous/nezkit.git",
     "branch": "refs/heads/develop",
-    "ref": "acf9e6255f1d6f96b30b98178dd1742ef1f3cea6"
+    "ref": "e1ac2113aba5ad6e6ddb03b28d8bec37b4ea02ab"
   },
   {
     "root": false,
@@ -37,7 +37,7 @@
     "manager": "npm",
     "origin": "git@github.com:nomilous/notice.git",
     "branch": "refs/heads/develop",
-    "ref": "a45e46aa73076cbe1d05cb71aa89e04fa418d887"
+    "ref": "b7fb03a23670118fcb86a6934cc2c7e1d344337b"
   },
   {
     "root": false,

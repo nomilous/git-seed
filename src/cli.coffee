@@ -16,6 +16,7 @@ notice.configure
     messenger: (msg) -> 
 
         description = msg.content.description
+        detail      = msg.content.detail
 
         switch msg.context.tenor
 
@@ -25,7 +26,8 @@ notice.configure
 
             else label = "(#{msg.content.label})".bold
 
-        console.log '%s - %s', label, description
+        console.log "%s - %s", label, description
+        console.log detail if detail
 
 
 

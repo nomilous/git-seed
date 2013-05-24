@@ -49,7 +49,7 @@ module.exports = GitAction =
 
         catch error
 
-            onNotify.event.bad 'missing plugin', error.toString()
+            onNotify.info.bad 'missing plugin', error.toString()
             process.exit 1
 
         return GitAction 
@@ -60,7 +60,7 @@ module.exports = GitAction =
         if typeof GitAction.deferral == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.event.good 'start seed init', 
+        GitAction.deferral.notify.info.good 'start seed init', 
             "recurse for git repositories in '#{ GitAction.root }'"
 
         
@@ -68,7 +68,7 @@ module.exports = GitAction =
 
         unless GitAction.gotDirectory GitAction.root + '/.git'
 
-            GitAction.deferral.notify.event.bad 'missing root repo', 
+            GitAction.deferral.notify.info.bad 'missing root repo', 
                 "no git reposititory in '#{ GitAction.root }'"
             return
 
@@ -80,13 +80,12 @@ module.exports = GitAction =
         if typeof GitAction.deferral == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.event.good 'start seed status', 
+        GitAction.deferral.notify.info.good 'start seed status', 
             "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
 
-
-        # (new GitSeed GitAction.root, GitAction.plugin, GitAction.deferral).status()
+        (new GitSeed GitAction.root, GitAction.plugin, GitAction.deferral).status()
 
 
     clone: ->
@@ -94,7 +93,7 @@ module.exports = GitAction =
         if typeof GitAction.deferral == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.event.good 'start seed clone', 
+        GitAction.deferral.notify.info.good 'start seed clone', 
             "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
@@ -107,7 +106,7 @@ module.exports = GitAction =
         if typeof GitAction.deferral == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.event.good 'start seed commit', 
+        GitAction.deferral.notify.info.good 'start seed commit', 
             "for any git repositories with staged changes in '#{ GitAction.root }/.git-seed' "
 
         GitAction.error = ''
@@ -127,7 +126,7 @@ module.exports = GitAction =
         if typeof GitAction.deferral == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.event.good 'start seed pull', 
+        GitAction.deferral.notify.info.good 'start seed pull', 
             "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
