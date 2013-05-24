@@ -98,7 +98,7 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        # (new GitSeed GitAction.root, GitAction.plugin, GitAction.deferral).clone()
+        (new GitSeed GitAction.root, GitAction.plugin, GitAction.deferral).clone()
 
 
     commit: -> 
