@@ -12,8 +12,8 @@
     "path": "./node_modules/git-seed-npm",
     "manager": "npm",
     "origin": "git@github.com:nomilous/git-seed-npm.git",
-    "branch": "refs/heads/develop",
-    "ref": "d79d133f4e2a717ec16a05d41e16dd9323cab21f"
+    "branch": "refs/heads/master",
+    "ref": "7271d1d847a5f8a564c75680d0953ad08daceaa7"
   },
   {
     "root": false,
@@ -21,7 +21,7 @@
     "manager": "npm",
     "origin": "git@github.com:nomilous/git-seed-core.git",
     "branch": "refs/heads/develop",
-    "ref": "1e41eca7d54d7927a472aed813e2f1001c171d27"
+    "ref": "812489d2e91970da36d26245166d767b0e359206"
   },
   {
     "root": false,
