@@ -51,7 +51,7 @@ program.option '-p, --as-proxy        [config_file]',    '[NOT YET IMPLEMENTED] 
 
 program
     .command('init')
-    .description('Assemble the initial .nez_tree control file into [root]')
+    .description('Update the .git-seed control file')
     .action -> 
 
         GitAction.configure(
@@ -65,7 +65,7 @@ program
 
 program
     .command('status')
-    .description('Git status across all nested git repos')
+    .description('Status of all repos in the .git-seed')
     .action -> 
 
         GitAction.configure(
@@ -79,7 +79,7 @@ program
 
 program
     .command('clone')
-    .description('Git clone all missing nested git repos')
+    .description('Clone all missing repos in the .git-seed')
     .action -> 
 
         GitAction.configure(
@@ -93,7 +93,7 @@ program
 
 program 
     .command('commit')
-    .description('Git commit across all nested repos with staged changes.')
+    .description('Commit from all repos in the .git-seed (that have staged changes)')
     .action -> 
 
         GitAction.configure(
@@ -107,7 +107,7 @@ program
 
 program
     .command('pull')
-    .description('Git pull across all nested git repos.')
+    .description('Pull into all repos in the .git-seed')
     .action -> 
 
         GitAction.configure(
