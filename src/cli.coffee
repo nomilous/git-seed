@@ -18,18 +18,20 @@ notice.configure
         description = msg.content.description
         detail      = msg.content.detail
 
+        switch msg.context.type
+
+            when 'event' then label = "[#{msg.content.label}]".bold
+            when 'info'  then label = "(#{msg.content.label})"
+            else label = "#{msg.content.label}"
+
         switch msg.context.tenor
 
-            when 'good' then label = "(#{msg.content.label})".green
-        
-            when 'bad' then label = "(#{msg.content.label})".red
-
-            else label = "(#{msg.content.label})".bold
+            when 'good' then label = label.green
+            when 'bad' then label = label.red
+            else label = label.bold
 
         console.log "%s - %s", label, description
         console.log detail if detail
-
-
 
 
 program.option '    --package-manager [package_manager]',  'Calls package manager after each clone/pull (default npm)'       
