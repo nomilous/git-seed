@@ -33,6 +33,9 @@ notice.configure
         console.log "%s - %s", label, description
         console.log detail if detail
 
+        # if msg.content.label == 'seed update' 
+        #     console.log JSON.stringify msg.content.seed
+
 
 program.option '    --package-manager [package_manager]',  'Calls package manager after each clone/pull (default npm)'       
 program.option '-m, --message         [commit_message]',   'Specify commit message'
