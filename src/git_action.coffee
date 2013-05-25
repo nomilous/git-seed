@@ -1,8 +1,6 @@
-colors  = require 'colors'
-console.log 'remove colors'
 GitSeed = require('nezkit').seed
 fs      = require 'fs'
-w       = require 'when'
+task    = require('when').defer
 
 module.exports = GitAction =
 
@@ -34,9 +32,9 @@ module.exports = GitAction =
 
         ) then throw new Error 'requires promise handlers'
 
-        GitAction.deferral = w.defer()
-        GitAction.deferral.notify = onNotify
-        GitAction.deferral.promise.then onSuccess, onError, onNotify
+        GitAction.task = task()
+        GitAction.task.notify = onNotify
+        GitAction.task.promise.then onSuccess, onError, onNotify
 
 
         GitAction.root     = '.' 
@@ -57,10 +55,10 @@ module.exports = GitAction =
 
     init: -> 
 
-        if typeof GitAction.deferral == 'undefined' 
+        if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.info.good 'start seed init', 
+        GitAction.task.notify.info.good 'start seed init', 
             "recurse for git repositories in '#{ GitAction.root }'"
 
         
@@ -68,62 +66,62 @@ module.exports = GitAction =
 
         unless GitAction.gotDirectory GitAction.root + '/.git'
 
-            GitAction.deferral.notify.info.bad 'missing root repo', 
+            GitAction.task.notify.info.bad 'missing root repo', 
                 "no git reposititory in '#{ GitAction.root }'"
             return
 
-        GitSeed.init GitAction.root, GitAction.plugin, GitAction.deferral
+        GitSeed.init GitAction.root, GitAction.plugin, GitAction.task
 
 
     status: ->
 
-        if typeof GitAction.deferral == 'undefined' 
+        if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.info.good 'start seed status', 
+        GitAction.task.notify.info.good 'start seed status', 
             "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.root, GitAction.plugin, GitAction.deferral).status()
+        (new GitSeed GitAction.root, GitAction.plugin, GitAction.task).status()
 
 
     clone: ->
 
-        if typeof GitAction.deferral == 'undefined' 
+        if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.info.good 'start seed clone', 
+        GitAction.task.notify.info.good 'start seed clone', 
             "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.root, GitAction.plugin, GitAction.deferral).clone()
+        (new GitSeed GitAction.root, GitAction.plugin, GitAction.task).clone()
 
 
     commit: -> 
 
-        if typeof GitAction.deferral == 'undefined' 
+        if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.info.good 'start seed commit', 
+        GitAction.task.notify.info.good 'start seed commit', 
             "for any git repositories with staged changes in '#{ GitAction.root }/.git-seed' "
 
         GitAction.error = ''
 
         unless GitAction.message
-            GitAction.deferral.notify.info.bad 'missing commit message', 'use -m "message"'
+            GitAction.task.notify.info.bad 'missing commit message', 'use -m "message"'
             return
 
-        (new GitSeed GitAction.root, GitAction.plugin, GitAction.deferral).commit GitAction.message
+        (new GitSeed GitAction.root, GitAction.plugin, GitAction.task).commit GitAction.message
 
 
     pull: -> 
 
-        if typeof GitAction.deferral == 'undefined' 
+        if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.deferral.notify.info.good 'start seed pull', 
+        GitAction.task.notify.info.good 'start seed pull', 
             "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
