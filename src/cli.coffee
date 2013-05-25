@@ -20,15 +20,22 @@ notice.configure
 
         switch msg.context.type
 
-            when 'event' then label = "[#{msg.content.label}]".bold
-            when 'info'  then label = "(#{msg.content.label})"
+            when 'stdout'
+                process.stdout.write msg.content.label
+                return
+
+            when 'stderr'
+                process.stderr.write msg.content.label
+                return
+
+            when 'event' then label = "EVENT [#{msg.content.label}]".bold
+            when 'info'  then label = " info (#{msg.content.label})"
             else label = "#{msg.content.label}"
 
         switch msg.context.tenor
 
             when 'good' then label = label.green
             when 'bad' then label = label.red
-            else label = label.bold
 
         console.log "%s - %s", label, description
         console.log detail if detail
