@@ -111,14 +111,11 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        # (new GitSeed GitAction.root, GitAction.plugin).commit GitAction.message, (error, result) ->
+        unless GitAction.message
+            GitAction.deferral.notify.info.bad 'missing commit message', 'use -m "message"'
+            return
 
-        #     if error
-
-        #         console.log '(error) '.red + error.toString()
-        #         process.exit 6
-
-        #     process.exit 0
+        (new GitSeed GitAction.root, GitAction.plugin, GitAction.deferral).commit GitAction.message
 
 
     pull: -> 
