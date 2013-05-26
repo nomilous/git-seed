@@ -14,8 +14,8 @@
       "workDir": "./node_modules/git-seed-npm",
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:nomilous/git-seed-npm.git",
-      "HEAD": "refs/heads/master",
-      "version": "7271d1d847a5f8a564c75680d0953ad08daceaa7"
+      "HEAD": "refs/heads/develop",
+      "version": "7020d82daad02800fd0b4e13e4aae5b6dfeba670"
     },
     {
       "root": false,
