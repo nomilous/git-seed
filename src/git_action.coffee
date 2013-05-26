@@ -57,7 +57,7 @@ module.exports = GitAction =
         if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.task.notify.info.good 'start seed init', 
+        GitAction.task.notify.info.normal 'start seed init', 
             "recurse for git repositories in '#{ GitAction.root }'"
 
         
@@ -77,7 +77,7 @@ module.exports = GitAction =
         if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.task.notify.info.good 'start seed status', 
+        GitAction.task.notify.info.normal 'start seed status', 
             "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
@@ -90,7 +90,7 @@ module.exports = GitAction =
         if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.task.notify.info.good 'start seed clone', 
+        GitAction.task.notify.info.normal 'start seed clone', 
             "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
@@ -103,7 +103,7 @@ module.exports = GitAction =
         if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.task.notify.info.good 'start seed commit', 
+        GitAction.task.notify.info.normal 'start seed commit', 
             "for any git repositories with staged changes in '#{ GitAction.root }/.git-seed' "
 
         GitAction.error = ''
@@ -120,7 +120,7 @@ module.exports = GitAction =
         if typeof GitAction.task == 'undefined' 
             throw new Error 'configure() was not called'
 
-        GitAction.task.notify.info.good 'start seed pull', 
+        GitAction.task.notify.info.normal 'start seed pull', 
             "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''

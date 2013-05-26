@@ -1,50 +1,51 @@
 [
   {
     "root": true,
-    "path": ".",
-    "manager": "npm",
-    "origin": "git@github.com:nomilous/git-seed.git",
-    "branch": "refs/heads/develop",
+    "workDir": ".",
+    "packageManager": "npm",
+    "remote.origin.url": "git@github.com:nomilous/git-seed.git",
+    "HEAD": "refs/heads/develop",
+    "version": "d38b5deb28ddc97a375ba4fb4ada4acc0f145c45",
     "ref": "ROOT_REPO_REF"
   },
   {
     "root": false,
-    "path": "./node_modules/git-seed-npm",
-    "manager": "npm",
-    "origin": "git@github.com:nomilous/git-seed-npm.git",
-    "branch": "refs/heads/master",
-    "ref": "7271d1d847a5f8a564c75680d0953ad08daceaa7"
+    "workDir": "./node_modules/git-seed-npm",
+    "packageManager": "npm",
+    "remote.origin.url": "git@github.com:nomilous/git-seed-npm.git",
+    "HEAD": "refs/heads/master",
+    "version": "7271d1d847a5f8a564c75680d0953ad08daceaa7"
   },
   {
     "root": false,
-    "path": "./node_modules/git-seed-npm/node_modules/git-seed-core",
-    "manager": "npm",
-    "origin": "git@github.com:nomilous/git-seed-core.git",
-    "branch": "refs/heads/develop",
-    "ref": "0b505c8142411ad697c93aa7014bfb433842e039"
+    "workDir": "./node_modules/git-seed-npm/node_modules/git-seed-core",
+    "packageManager": "npm",
+    "remote.origin.url": "git@github.com:nomilous/git-seed-core.git",
+    "HEAD": "refs/heads/develop",
+    "version": "bf0d49e9cd6db443dfce91bd204ade7eb404e306"
   },
   {
     "root": false,
-    "path": "./node_modules/nezkit",
-    "manager": "npm",
-    "origin": "git@github.com:nomilous/nezkit.git",
-    "branch": "refs/heads/develop",
-    "ref": "888e17acc4f85e87c928e006c8fd48882ac5a453"
+    "workDir": "./node_modules/nezkit",
+    "packageManager": "npm",
+    "remote.origin.url": "git@github.com:nomilous/nezkit.git",
+    "HEAD": "refs/heads/develop",
+    "version": "888e17acc4f85e87c928e006c8fd48882ac5a453"
   },
   {
     "root": false,
-    "path": "./node_modules/notice",
-    "manager": "npm",
-    "origin": "git@github.com:nomilous/notice.git",
-    "branch": "refs/heads/develop",
-    "ref": "2b8839a17bd5a14132725b1c8b12fcfbfecbcd51"
+    "workDir": "./node_modules/notice",
+    "packageManager": "npm",
+    "remote.origin.url": "git@github.com:nomilous/notice.git",
+    "HEAD": "refs/heads/develop",
+    "version": "2b8839a17bd5a14132725b1c8b12fcfbfecbcd51"
   },
   {
     "root": false,
-    "path": "./node_modules/notice-cli",
-    "manager": "npm",
-    "origin": "git@github.com:nomilous/notice-cli.git",
-    "branch": "refs/heads/develop",
-    "ref": "42eb9bbf1fc093f4ba77df992254c99300948660"
+    "workDir": "./node_modules/notice-cli",
+    "packageManager": "npm",
+    "remote.origin.url": "git@github.com:nomilous/notice-cli.git",
+    "HEAD": "refs/heads/develop",
+    "version": "42eb9bbf1fc093f4ba77df992254c99300948660"
   }
 ]
