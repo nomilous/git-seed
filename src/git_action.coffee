@@ -69,7 +69,7 @@ module.exports = GitAction =
                 "no git reposititory in '#{ GitAction.root }'"
             return
 
-        GitSeed.init GitAction.root, GitAction.plugin, GitAction.task
+        GitSeed.init GitAction.task, GitAction.root, GitAction.plugin
 
 
     status: ->
