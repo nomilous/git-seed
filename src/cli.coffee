@@ -37,7 +37,7 @@ notice.configure
             when 'good' then label = label.green
             when 'bad' then label = label.red
 
-        console.log "%s - %s", label, description
+        console.log "%s - %s", label.white, description
         console.log detail if detail
 
         # if msg.content.label == 'seed update' 

@@ -22,7 +22,6 @@ module.exports = GitAction =
     error: 'unknown or missing command'
 
 
-    assign: -> GitAction.configure  #DEPRECATE
     configure: (program, onSuccess, onError, onNotify) ->
 
         if (
