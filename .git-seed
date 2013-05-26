@@ -1,51 +1,53 @@
-[
-  {
-    "root": true,
-    "workDir": ".",
-    "packageManager": "npm",
-    "remote.origin.url": "git@github.com:nomilous/git-seed.git",
-    "HEAD": "refs/heads/develop",
-    "version": "d38b5deb28ddc97a375ba4fb4ada4acc0f145c45",
-    "ref": "ROOT_REPO_REF"
-  },
-  {
-    "root": false,
-    "workDir": "./node_modules/git-seed-npm",
-    "packageManager": "npm",
-    "remote.origin.url": "git@github.com:nomilous/git-seed-npm.git",
-    "HEAD": "refs/heads/master",
-    "version": "7271d1d847a5f8a564c75680d0953ad08daceaa7"
-  },
-  {
-    "root": false,
-    "workDir": "./node_modules/git-seed-npm/node_modules/git-seed-core",
-    "packageManager": "npm",
-    "remote.origin.url": "git@github.com:nomilous/git-seed-core.git",
-    "HEAD": "refs/heads/develop",
-    "version": "bf0d49e9cd6db443dfce91bd204ade7eb404e306"
-  },
-  {
-    "root": false,
-    "workDir": "./node_modules/nezkit",
-    "packageManager": "npm",
-    "remote.origin.url": "git@github.com:nomilous/nezkit.git",
-    "HEAD": "refs/heads/develop",
-    "version": "888e17acc4f85e87c928e006c8fd48882ac5a453"
-  },
-  {
-    "root": false,
-    "workDir": "./node_modules/notice",
-    "packageManager": "npm",
-    "remote.origin.url": "git@github.com:nomilous/notice.git",
-    "HEAD": "refs/heads/develop",
-    "version": "2b8839a17bd5a14132725b1c8b12fcfbfecbcd51"
-  },
-  {
-    "root": false,
-    "workDir": "./node_modules/notice-cli",
-    "packageManager": "npm",
-    "remote.origin.url": "git@github.com:nomilous/notice-cli.git",
-    "HEAD": "refs/heads/develop",
-    "version": "42eb9bbf1fc093f4ba77df992254c99300948660"
-  }
-]
+{
+  "version": 2,
+  "repos": [
+    {
+      "root": true,
+      "workDir": ".",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:nomilous/git-seed.git",
+      "HEAD": "refs/heads/develop",
+      "version": "ROOT_REPO_REF"
+    },
+    {
+      "root": false,
+      "workDir": "./node_modules/git-seed-npm",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:nomilous/git-seed-npm.git",
+      "HEAD": "refs/heads/master",
+      "version": "7271d1d847a5f8a564c75680d0953ad08daceaa7"
+    },
+    {
+      "root": false,
+      "workDir": "./node_modules/git-seed-npm/node_modules/git-seed-core",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:nomilous/git-seed-core.git",
+      "HEAD": "refs/heads/develop",
+      "version": "eb52ace54094e8613b5fefb097bbd876f5032917"
+    },
+    {
+      "root": false,
+      "workDir": "./node_modules/nezkit",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:nomilous/nezkit.git",
+      "HEAD": "refs/heads/develop",
+      "version": "22660dff0fce6b7d2c2659edfa386ccaa143afd6"
+    },
+    {
+      "root": false,
+      "workDir": "./node_modules/notice",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:nomilous/notice.git",
+      "HEAD": "refs/heads/develop",
+      "version": "2b8839a17bd5a14132725b1c8b12fcfbfecbcd51"
+    },
+    {
+      "root": false,
+      "workDir": "./node_modules/notice-cli",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:nomilous/notice-cli.git",
+      "HEAD": "refs/heads/develop",
+      "version": "42eb9bbf1fc093f4ba77df992254c99300948660"
+    }
+  ]
+}
