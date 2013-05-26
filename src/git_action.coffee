@@ -82,7 +82,7 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.root, GitAction.plugin, GitAction.task).status()
+        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).status()
 
 
     clone: ->
@@ -95,7 +95,7 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.root, GitAction.plugin, GitAction.task).clone()
+        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).clone()
 
 
     commit: -> 
@@ -112,7 +112,7 @@ module.exports = GitAction =
             GitAction.task.notify.info.bad 'missing commit message', 'use -m "message"'
             return
 
-        (new GitSeed GitAction.root, GitAction.plugin, GitAction.task).commit GitAction.message
+        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).commit GitAction.message
 
 
     pull: -> 
@@ -125,5 +125,5 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.root, GitAction.plugin, GitAction.task).pull()
+        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).pull()
 
