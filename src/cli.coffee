@@ -1,47 +1,41 @@
 program   = require 'commander'
 colors    = require 'colors'
 GitAction = require './git_action'
+Notice    = require 'notice'
 
-notice    = require 'notice'
-console.log 'TODO: notice routability'
-notice.configure
-    source: 'git-seed'
+notice    = Notice.create 'git-seed'
 
-    #
-    # messenger: require 'notice-cli'
-    # 
-    # temporary local messenger
-    # 
+notice.use (msg, next) -> 
 
-    messenger: (msg) -> 
+    description = msg.context.description
+    #detail      = msg.content.detail
 
-        description = msg.content.description
-        detail      = msg.content.detail
+    switch msg.context.type
 
-        switch msg.context.type
+        # when 'stdout'
+        #     process.stdout.write msg.content.title
+        #     return
 
-            when 'stdout'
-                process.stdout.write msg.content.label
-                return
+        # when 'stderr'
+        #     process.stderr.write msg.content.title
+        #     return
 
-            when 'stderr'
-                process.stderr.write msg.content.label
-                return
+        when 'event' then title = "EVENT [#{msg.context.title}]".bold
+        when 'info'  then title = " info (#{msg.context.title})"
+        else title = "#{msg.context.title}"
 
-            when 'event' then label = "EVENT [#{msg.content.label}]".bold
-            when 'info'  then label = " info (#{msg.content.label})"
-            else label = "#{msg.content.label}"
+    switch msg.context.tenor
 
-        switch msg.context.tenor
+        when 'good' then title = title.green
+        when 'bad' then title = title.red
 
-            when 'good' then label = label.green
-            when 'bad' then label = label.red
+    console.log "%s - %s", title.white, description
+    console.log detail if detail
 
-        console.log "%s - %s", label.white, description
-        console.log detail if detail
+    next()
 
-        # if msg.content.label == 'seed update' 
-        #     console.log JSON.stringify msg.content.seed
+    # if msg.content.label == 'seed update' 
+    #     console.log JSON.stringify msg.content.seed
 
 
 program.option '    --package-manager [package_manager]',  'Calls package manager after each clone/pull (default npm)'       
