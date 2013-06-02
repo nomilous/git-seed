@@ -1,24 +1,14 @@
 program   = require 'commander'
 colors    = require 'colors'
 GitAction = require './git_action'
+Factory   = require 'notice'
 Notice    = require 'notice'
 
-notice    = Notice.create 'git-seed'
-
-notice.use (msg, next) -> 
+notice    = Notice.create 'git-seed', (msg, next) -> 
 
     description = msg.context.description
-    #detail      = msg.content.detail
 
     switch msg.context.type
-
-        # when 'stdout'
-        #     process.stdout.write msg.content.title
-        #     return
-
-        # when 'stderr'
-        #     process.stderr.write msg.content.title
-        #     return
 
         when 'event' then title = "EVENT [#{msg.context.title}]".bold
         when 'info'  then title = " info (#{msg.context.title})"
@@ -30,8 +20,6 @@ notice.use (msg, next) ->
         when 'bad' then title = title.red
 
     console.log "%s - %s", title.white, description
-    console.log detail if detail
-
     next()
 
     # if msg.content.label == 'seed update' 
