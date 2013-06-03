@@ -7,6 +7,7 @@ Notice    = require 'notice'
 notice    = Notice.create 'git-seed', (msg, next) -> 
 
     description = msg.context.description
+    detail = msg.content.payload.detail
 
     switch msg.context.type
 
@@ -20,10 +21,8 @@ notice    = Notice.create 'git-seed', (msg, next) ->
         when 'bad' then title = title.red
 
     console.log "%s - %s", title.white, description
+    console.log detail if detail?
     next()
-
-    # if msg.content.label == 'seed update' 
-    #     console.log JSON.stringify msg.content.seed
 
 
 program.option '    --package-manager [package_manager]',  'Calls package manager after each clone/pull (default npm)'       
