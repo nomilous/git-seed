@@ -14,6 +14,23 @@ Install
 sudo npm install git-seed -g
 ```
 
+### console output
+
+Default console output can be modified to personal preference by defining an alternative 'git-seed' [notice](https://github.com/nomilous/notice) middleware function in `$HOME/.notice/middleware.js`
+
+```js
+
+module.exports = {
+
+    'git-seed': function( msg, next ) {
+        console.log(msg.content);
+        next();
+    }
+
+}
+
+```
+
 Usage
 =====
 
