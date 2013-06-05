@@ -15,7 +15,7 @@
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:nomilous/git-seed-npm.git",
       "HEAD": "refs/heads/develop",
-      "version": "9b6cfd6ce548dda52b9970e38eb9629c56193a6d"
+      "version": "8b3f6c00ad7f408494cfb494eb88d0ea9064afc5"
     },
     {
       "root": false,
@@ -23,7 +23,7 @@
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:nomilous/git-seed-core.git",
       "HEAD": "refs/heads/develop",
-      "version": "bdf844f520dbb2bf2aecef0e43b42cbf0fe131c6"
+      "version": "f34785ca638a5b8ac6e280938c9f8d447f8ceeee"
     },
     {
       "root": false,
