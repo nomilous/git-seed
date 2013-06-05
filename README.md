@@ -78,6 +78,10 @@ git seed status
 
 Report status across all repos in the `.git-seed` file
 
+```bash
+
+> git seed status
+
 info (start seed status) - for all git repositories in './.git-seed'
  info (has changes) - .
 # On branch develop
@@ -97,7 +101,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
  info (seed status) - success
  info (seed status results) - undefined
 
-
+```
 
 
 
