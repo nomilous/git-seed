@@ -10,13 +10,15 @@ git-seed
 Install
 -------
 
+### Global install with npm
+
 ```bash
 sudo npm install git-seed -g
 ```
 
-### console output
+### Integrate / Personalize
 
-Default console output can be modified to personal preference by defining an alternative 'git-seed' [notice](https://github.com/nomilous/notice) middleware function in `$HOME/.notice/middleware.js`
+Output from a `git seed` run can be intercepted by defining an alternative 'git-seed' notification middleware function in `$HOME/.notice/middleware.js`
 
 ```js
 
