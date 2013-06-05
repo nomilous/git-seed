@@ -23,7 +23,7 @@
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:nomilous/git-seed-core.git",
       "HEAD": "refs/heads/develop",
-      "version": "5a2a218c5bdb4a3008927d1fa44d870d9b75caa1"
+      "version": "bdf844f520dbb2bf2aecef0e43b42cbf0fe131c6"
     },
     {
       "root": false,
