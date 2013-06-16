@@ -123,74 +123,29 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 
+git seed commit
+---------------
 
-
-
-### Step 5 - commit
-
-* **First** it should be pointed out that this commit will enact a commit across **all** repos that have pending files **staged** (ie. files that were `git add <file>`ed)
-* This global commit may therefore not be ideal because it commits with a common log message for all.
-* **It is suggested that in most cases commits should be done manually in each repo**
+Commit with a common message across all repos with staged changes
 
 ```bash
 
-> cd ./root/node_modules/elix
-> git add requirements/manageability.coffee 
-> cd ../../ 
-> git seed commit -m 'it propagates a config hup into the tree'
-(commit) on all repositories with staged changes in . 
+> git seed commit -m 'commit uses pipeline'
 
-(skip) no staged changes in .
-(skip) no staged changes in ./node/node_modules/brix
-(skip) no staged changes in ./node/node_modules/brix/node_modules/trix
-(skip) no staged changes in ./node_modules/nez
-(run) git --git-dir=./root/node_modules/elix/.git --work-tree=./root/node_modules/elix commit -m it propagates a config hup into the tree
-[develop 74d5db8] it propagates a config hup into the tree
- 1 file changed, 1 insertion(+)
+info (start seed commit) - for any git repositories with staged changes in './.git-seed' 
+ info (skip) - no staged changes .
+ info (skip) - no staged changes ./node_modules/git-seed-npm
+ info (shell) - run git --git-dir=./node_modules/git-seed-npm/node_modules/git-seed-core/.git --work-tree=./node_modules/git-seed-npm/node_modules/git-seed-core commit -m commit uses pipeline
+ info (commit) - ./node_modules/git-seed-npm/node_modules/git-seed-core
+[develop aa5c505] commit uses pipeline
+ 4 files changed, 117 insertions(+), 91 deletions(-)
 
->
-
-#
-# the new status as expected
-#
-
-> git seed status
-(status) for all expected repositories in . 
-
-(skip) no change at .
-(skip) no change at ./node/node_modules/brix
-(skip) no change at ./node/node_modules/brix/node_modules/trix
-(skip) no change at ./node_modules/nez
-
-(change) ./root/node_modules/elix
-# On branch develop
-# Your branch is ahead of 'origin/develop' by 1 commit.
-#
-nothing to commit (working directory clean)
-
->
-
-```
-
-
-#### **Important point** 
-
-* It may be that one of your repos has forgetccidentally been left checkedout on the wrong branch (according to the `.git-seed` control file)
-* The commit run **will report this case of affairs and take no further action** for that repo.  
-
-```bash
-
-> cd ./root/node_modules/elix
-> git checkout master
-> cd -
-> git seed commit -m 'shared commit log message'
-(commit) on all repositories with staged changes in . 
-
-(skip) no staged changes in .
-(skip) no staged changes in ./node/node_modules/brix
-(skip) no staged changes in ./node/node_modules/brix/node_modules/trix
-(skip) no staged changes in ./node_modules/nez
-( SKIPPED ) ./root/node_modules/elix SHOULD BE ON BRANCH refs/heads/develop NOT refs/heads/master
+ info (skip) - no staged changes ./node_modules/git-seed-npm/node_modules/git-seed-core
+ info (skip) - no staged changes ./node_modules/nezkit
+ info (skip) - no staged changes ./node_modules/notice
+ info (skip) - no staged changes ./node_modules/notice-cli
+ info (seed commit) - success
+ info (seed commit results) - undefined
 
 ```
 
