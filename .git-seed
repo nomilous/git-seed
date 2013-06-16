@@ -8,30 +8,6 @@
       "remote.origin.url": "git@github.com:nomilous/git-seed.git",
       "HEAD": "refs/heads/develop",
       "version": "ROOT_REPO_REF"
-    },
-    {
-      "root": false,
-      "workDir": "./node_modules/nezkit",
-      "packageManager": "npm",
-      "remote.origin.url": "git@github.com:nomilous/nezkit.git",
-      "HEAD": "refs/heads/develop",
-      "version": "15b052159fdf045e0f256714e24d521edba3ca0f"
-    },
-    {
-      "root": false,
-      "workDir": "./node_modules/notice",
-      "packageManager": "npm",
-      "remote.origin.url": "git@github.com:nomilous/notice.git",
-      "HEAD": "refs/heads/develop",
-      "version": "651a081226fbe32967a9d1e02790128c625b33fa"
-    },
-    {
-      "root": false,
-      "workDir": "./node_modules/notice-cli",
-      "packageManager": "npm",
-      "remote.origin.url": "git@github.com:nomilous/notice-cli.git",
-      "HEAD": "refs/heads/develop",
-      "version": "42eb9bbf1fc093f4ba77df992254c99300948660"
     }
   ]
 }

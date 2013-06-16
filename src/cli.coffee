@@ -1,7 +1,6 @@
 program   = require 'commander'
 colors    = require 'colors'
 GitAction = require './git_action'
-Factory   = require 'notice'
 Notice    = require 'notice'
 
 notice    = Notice.create 'git-seed', (msg, next) -> 
