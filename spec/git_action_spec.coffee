@@ -1,4 +1,6 @@
-require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -> 
+require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit, notice) -> 
+
+    note = notice.create 'git-seed', (msg, next) -> 
 
     context 'assign()', (it) -> 
 
@@ -21,7 +23,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
                 -> 
                 ->
             )
-            should.exist GitAction.deferral
+            should.exist GitAction.task
             test done
 
 
@@ -34,20 +36,21 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
                 root: '.' 
                 ->
                 ->
-
+                note
             ).init()
 
 
         it 'passes the deferral onto the seed class', (done) -> 
 
             nezkit.seed.init = -> 
-                arguments[2].should.equal GitAction.deferral
+                arguments[0].should.equal GitAction.task
                 test done
 
             GitAction.configure( 
                 root: '.' 
                 ->
                 ->
+                note
             ).init()
 
 
@@ -72,6 +75,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
                 root: '.' 
                 ->
                 ->
+                note
 
             ).clone()
 
@@ -85,6 +89,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit) -
                 root: '.' 
                 ->
                 ->
+                note
             ).status()
 
 

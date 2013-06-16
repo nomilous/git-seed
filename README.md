@@ -150,31 +150,43 @@ info (start seed commit) - for any git repositories with staged changes in './.g
 ```
 
 
-### Step 6 - pull
+git seed pull
+-------------
 
-* This first pulls the root repo to get the latest `.git-seed` control file
-* Then it pulls all the nested repos.
-* Before pulling a nested repo a comparison is made against the `.git-seed` file. Pulls are skipped if the local clone **is already at the version specified** or **is on a different branch**.
-* It runs `npm install` across all repos once the pulls are complete.
+Pull across all repos
+
+* Pull first pulls the root repo to get the latest seed file 
+* Pull only pulls other repos if their local version differs from that in the seed file
 
 ```bash
-> git seed pull
-(pull) pull all where necessary . 
 
-(run) git pull git@github.com:nomilous/git-seed.git refs/heads/develop (in .)
-From github.com:nomilous/git-seed
- * branch            develop    -> FETCH_HEAD
-Already up-to-date.
-(skip) ./node_modules/git-seed-npm already up-to-date with .git-seed
-(skip) ./node_modules/git-seed-npm/node_modules/git-seed-core already up-to-date with .git-seed
-(run) npm install (in .)
-(run) npm install (in ./node_modules/git-seed-npm)
-(run) npm install (in ./node_modules/git-seed-npm/node_modules/git-seed-core)
+> git seed pull
+
+info (start seed pull) - for all git repositories in './.git-seed'
+ info (pull) - .
+ info (shell) - run git pull git@github.com:nomilous/git-seed.git refs/heads/develop, (in .)
+ info (seed pull) - success
+ info (seed pull results) - undefined
+ info (skip) - already up-to-date ./node_modules/nezkit
+ info (skip) - already up-to-date ./node_modules/notice
+ info (skip) - already up-to-date ./node_modules/notice-cli
+ info (seed pull) - success
+ info (seed pull results) - undefined
+ info (shell) - run npm install, (in .)
+npm http GET https://registry.npmjs.org/git-seed-npm/0.0.3
+npm http 304 https://registry.npmjs.org/git-seed-npm/0.0.3
+npm http GET https://registry.npmjs.org/git-seed-core/0.0.2
+...
+npm http 304 https://registry.npmjs.org/traverse
+npm http 304 https://registry.npmjs.org/traverse
+git-seed-npm@0.0.3 node_modules/git-seed-npm
+└── git-seed-core@0.0.2 (when@2.1.0, fs-extra@0.6.1, findit@0.1.2)
+ info (shell) - run npm install, (in ./node_modules/nezkit)
+ info (shell) - run npm install, (in ./node_modules/notice)
+ info (shell) - run npm install, (in ./node_modules/notice-cli)
+EVENT [seed install] - success
+ info (seed install results) - undefined
+
+
 
 ```
-
-
-### Step 7 - push
-
-Herein lies intricacy... *Thinking*
-
