@@ -1,6 +1,6 @@
-colors  = require 'colors'
 GitSeed = require('nezkit').seed
 fs      = require 'fs'
+task    = require('when').defer
 
 module.exports = GitAction =
 
@@ -21,11 +21,24 @@ module.exports = GitAction =
 
     error: 'unknown or missing command'
 
-    assign: (program) ->
 
-        GitAction.root    = '.' 
-        GitAction.message = program.message
-        plugin            = program.packageManager || 'npm'
+    configure: (program, onSuccess, onError, onNotify) ->
+
+        if (
+
+            typeof onSuccess == 'undefined' or 
+            typeof onError == 'undefined'
+
+        ) then throw new Error 'requires promise handlers'
+
+        GitAction.task = task()
+        GitAction.task.notify = onNotify
+        GitAction.task.promise.then onSuccess, onError, onNotify
+
+
+        GitAction.root     = '.' 
+        GitAction.message  = program.message
+        plugin             = program.packageManager || 'npm'
 
         try
 
@@ -33,7 +46,7 @@ module.exports = GitAction =
 
         catch error
 
-            console.log '(error) '.red + 'while loading plugin: ' + error.toString()
+            onNotify.info.bad 'missing plugin', error.toString()
             process.exit 1
 
         return GitAction 
@@ -41,126 +54,82 @@ module.exports = GitAction =
 
     init: -> 
 
-        console.log '(init)'.bold, 'scanning for git repositories in', GitAction.root, '\n'
+        if typeof GitAction.task == 'undefined' 
+            throw new Error 'configure() was not called'
 
+        GitAction.task.notify.info.normal 'start seed init', 
+            "recurse for git repositories in '#{ GitAction.root }'"
+
+        
         GitAction.error = ''
 
-        try
+        unless GitAction.gotDirectory GitAction.root + '/.git'
 
-            unless GitAction.gotDirectory GitAction.root + '/.git'
+            GitAction.task.notify.info.bad 'missing root repo', 
+                "no git reposititory in '#{ GitAction.root }'"
+            return
 
-                console.log '(fail)'.red, 'no git reposititory in', GitAction.root, '\n'
-                process.exit 2
-
-            GitSeed.init GitAction.root, GitAction.plugin
-
-        catch error
-
-            console.log '(error) '.red + error.toString()
-            process.exit 3
+        GitSeed.init GitAction.task, GitAction.root, GitAction.plugin
 
 
     status: ->
 
-        console.log '(status)'.bold, 'for all expected repositories in', GitAction.root, '\n'
+        if typeof GitAction.task == 'undefined' 
+            throw new Error 'configure() was not called'
+
+        GitAction.task.notify.info.normal 'start seed status', 
+            "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
 
-        try
-
-            (new GitSeed GitAction.root, GitAction.plugin).status()
-
-        catch error
-
-            console.log '(error) '.red + error.toString()
-            process.exit 3
+        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).status()
 
 
     clone: ->
 
-        console.log '(clone)'.bold, 'all missing repositories in', GitAction.root, '\n'
+        if typeof GitAction.task == 'undefined' 
+            throw new Error 'configure() was not called'
+
+        GitAction.task.notify.info.normal 'start seed clone', 
+            "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
 
-        seed = new GitSeed GitAction.root, GitAction.plugin
-        seed.clone (error, result) ->
-
-            if error
-
-                console.log '(error) '.red + error.toString()
-                process.exit 4
-
-            process.exit 0
+        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).clone()
 
 
     commit: -> 
 
-        console.log '(commit)'.bold, 'on all repositories', 'with staged changes'.bold, 'in', GitAction.root, '\n'
+        if typeof GitAction.task == 'undefined' 
+            throw new Error 'configure() was not called'
+
+        GitAction.task.notify.info.normal 'start seed commit', 
+            "for any git repositories with staged changes in '#{ GitAction.root }/.git-seed' "
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.root, GitAction.plugin).commit GitAction.message, (error, result) ->
+        unless GitAction.message
+            GitAction.task.notify.info.bad 'missing commit message', 'use -m "message"'
+            return
 
-            if error
+        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).commit GitAction.message
 
-                console.log '(error) '.red + error.toString()
-                process.exit 6
-
-            process.exit 0
-
-
-
-    push: -> 
-
-        GitAction.error = ''
-        process.exit 6
-        process.exit 7
-        
 
     pull: -> 
 
-        console.log '(pull)'.bold, 'pull all where necessary', GitAction.root, '\n'
+        if typeof GitAction.task == 'undefined' 
+            throw new Error 'configure() was not called'
+
+        GitAction.task.notify.info.normal 'start seed pull', 
+            "for all git repositories in '#{ GitAction.root }/.git-seed'"
 
         GitAction.error = ''
 
-        seed = new GitSeed GitAction.root, GitAction.plugin
+        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).pullRoot (error, result) -> 
 
-        seed.pull null, (error, result) -> 
-
-            #
-            # First call to pull with a null fetches only the root repo
-            # to get the latest .git-seed file
-            #
-
-            if error
-
-                console.log '(error) '.red + error.toString()
-                process.exit 9
-
-
-            #
-            # load the seed packages again (now with the latest .git-seed)
-            # and recall to pull all nested repos
-            # 
-
-            seed = new GitSeed GitAction.root, GitAction.plugin
-            seed.pull seed, (error, result) -> 
-
-                if error
-
-                    console.log '(error) '.red + error.toString()
-                    process.exit 10
-
-                process.exit 0
-
-        #
-        # then package manager install on all
-        #
-        
-
-
-
-
+            unless error? 
+            
+                (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).pull()
 
 
 

@@ -1,10 +1,13 @@
-[
-  {
-    "root": true,
-    "path": ".",
-    "origin": "git@github.com:nomilous/git-seed.git",
-    "branch": "refs/heads/master",
-    "ref": "ROOT_REPO_REF",
-    "manager": "npm"
-  }
-]
+{
+  "version": 2,
+  "repos": [
+    {
+      "root": true,
+      "workDir": ".",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:nomilous/git-seed.git",
+      "HEAD": "refs/heads/master",
+      "version": "ROOT_REPO_REF"
+    }
+  ]
+}
