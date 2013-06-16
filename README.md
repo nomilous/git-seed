@@ -6,7 +6,7 @@ git-seed
 
 ### Current version 
 
-0.0.4 (unstable)
+0.0.5 (unstable)
 
 
 Install
