@@ -31,7 +31,7 @@
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:nomilous/nezkit.git",
       "HEAD": "refs/heads/develop",
-      "version": "c9cc4d85bfb5289c109464e4852f5fad60f0bd82"
+      "version": "15b052159fdf045e0f256714e24d521edba3ca0f"
     },
     {
       "root": false,
