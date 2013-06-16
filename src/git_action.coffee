@@ -125,5 +125,12 @@ module.exports = GitAction =
 
         GitAction.error = ''
 
-        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).pull()
+        (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).pull true, (error, result) -> 
+
+            unless error? 
+            
+                (new GitSeed GitAction.task, GitAction.root, GitAction.plugin).pull false
+
+
+
 

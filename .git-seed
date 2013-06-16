@@ -23,7 +23,7 @@
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:nomilous/git-seed-core.git",
       "HEAD": "refs/heads/develop",
-      "version": "aa5c505f015f6313f7e9263dc5b3d24fdd5eea37"
+      "version": "9df9fa413d22c8fcbf0b5149f8449e370dd0e43d"
     },
     {
       "root": false,
@@ -31,7 +31,7 @@
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:nomilous/nezkit.git",
       "HEAD": "refs/heads/develop",
-      "version": "6323f68edb85af61c30c94d532a73e2684e408aa"
+      "version": "c9cc4d85bfb5289c109464e4852f5fad60f0bd82"
     },
     {
       "root": false,
