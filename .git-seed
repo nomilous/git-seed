@@ -11,22 +11,6 @@
     },
     {
       "root": false,
-      "workDir": "./node_modules/git-seed-npm",
-      "packageManager": "npm",
-      "remote.origin.url": "git@github.com:nomilous/git-seed-npm.git",
-      "HEAD": "refs/heads/develop",
-      "version": "8b3f6c00ad7f408494cfb494eb88d0ea9064afc5"
-    },
-    {
-      "root": false,
-      "workDir": "./node_modules/git-seed-npm/node_modules/git-seed-core",
-      "packageManager": "npm",
-      "remote.origin.url": "git@github.com:nomilous/git-seed-core.git",
-      "HEAD": "refs/heads/develop",
-      "version": "9df9fa413d22c8fcbf0b5149f8449e370dd0e43d"
-    },
-    {
-      "root": false,
       "workDir": "./node_modules/nezkit",
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:nomilous/nezkit.git",
