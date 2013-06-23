@@ -2,15 +2,12 @@
 
 GitSeed = require('nez').objective 'GitSeed',
 
-    nimbal:      'https://localhost:10101/'
-    class:       'Core Module'
-    category:    'Deployability'
     description: """
 
         Simplify the infrastructual overhead of developing,
         testing and deploying applications composed of mul-
         tiple component modules.
 
-    """, (requirement) -> 
+    """  
 
-        requirement.link 'requirement/cli'
+    -> 

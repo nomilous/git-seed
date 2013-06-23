@@ -1,3 +1,5 @@
+[objective](https://github.com/nomilous/git-seed/blob/master/objective)
+
 `sudo npm install git-seed -g`
 
 ### Current version 0.0.6 (unstable)
@@ -5,9 +7,6 @@
 
 git-seed
 ========
-
-[objective](https://github.com/nomilous/git-seed/blob/master/objective)
-
 
 Integrate / Personalize
 -----------------------
