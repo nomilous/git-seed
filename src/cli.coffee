@@ -5,7 +5,7 @@ Notice    = require 'notice'
 
 notice    = Notice.create 'git-seed', (msg, next) -> 
 
-    description = msg.context.description
+    description = msg.context.description || ''
     detail = msg.content.payload.detail
 
     switch msg.context.type
@@ -16,8 +16,15 @@ notice    = Notice.create 'git-seed', (msg, next) ->
 
     switch msg.context.tenor
 
-        when 'good' then title = title.green
-        when 'bad' then title = title.red
+        when 'good' 
+
+            title = title.green
+            description = description.bold
+
+        when 'bad' 
+
+            title = title.red
+            description = description.bold
 
     console.log "%s - %s", title.white, description
     console.log detail if detail?

@@ -1,24 +1,16 @@
+`sudo npm install git-seed -g`
+
+### Current version 0.0.6 (unstable)
+
+
 git-seed
 ========
 
 [objective](https://github.com/nomilous/git-seed/blob/master/objective)
 
 
-### Current version 
-
-0.0.5 (unstable)
-
-
-Install
--------
-
-### Global install with npm
-
-```bash
-sudo npm install git-seed -g
-```
-
-### Integrate / Personalize
+Integrate / Personalize
+-----------------------
 
 Output from a `git seed` run can be intercepted by defining an alternative 'git-seed' notification middleware function in `$HOME/.notice/middleware.js`
 
