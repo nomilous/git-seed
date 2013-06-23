@@ -4,7 +4,6 @@
 
 ### Current version 0.0.6 (unstable)
 
-
 git-seed
 ========
 
@@ -25,6 +24,8 @@ module.exports = {
 }
 
 ```
+More on that [here](https://github.com/nomilous/notice)
+
 
 Usage
 =====
