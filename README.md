@@ -7,25 +7,10 @@
 git-seed
 ========
 
-Integrate / Personalize
------------------------
+Todo
+----
 
-Output from a `git seed` run can be intercepted by defining an alternative 'git-seed' notification middleware function in `$HOME/.notice/middleware.js`
-
-```js
-
-module.exports = {
-
-    'git-seed': function( msg, next ) {
-        console.log(msg.content);
-        next();
-    }
-
-}
-
-```
-More on that [here](https://github.com/nomilous/notice)
-
+* Adding and removing sub repos runs into problems when either git or npm wish to write into a directory already populated by the other. No clear automatic solution, simply moving / deleting a directory is not an acceptable option.
 
 Usage
 =====
