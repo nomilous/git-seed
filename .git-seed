@@ -6,8 +6,16 @@
       "workDir": ".",
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:nomilous/git-seed.git",
-      "HEAD": "refs/heads/master",
+      "HEAD": "refs/heads/develop",
       "version": "ROOT_REPO_REF"
+    },
+    {
+      "root": false,
+      "workDir": "./node_modules/gitseed",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:nomilous/gitseed.git",
+      "HEAD": "refs/heads/develop",
+      "version": "b838b41d1232468c88d88a70ecdd464261ba42b0"
     }
   ]
 }

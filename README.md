@@ -2,10 +2,12 @@
 
 `sudo npm install git-seed -g`
 
-### Current version 0.0.6 (unstable)
+### Current version 0.0.7 (unstable)
 
 git-seed
 ========
+
+Git plugin to easily create, manage and replicate a composite clone set.
 
 Integrate / Personalize
 -----------------------
