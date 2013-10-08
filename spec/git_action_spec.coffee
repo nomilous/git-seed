@@ -1,8 +1,11 @@
-require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit, notice) -> 
+should = require 'should'
+notice = require 'notice'
 
-    note = notice.create 'git-seed', (msg, next) -> 
+describe 'git_action', -> 
 
-    context 'assign()', (it) -> 
+    #note = notice.create 'git-seed', (msg, next) -> 
+
+    context 'assign()', -> 
 
         it 'expects promise handlers', (done) -> 
 
@@ -13,7 +16,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit, n
             catch error
 
                 error.should.match /requires promise handlers/
-                test done
+                done()
 
 
         it 'promises a result', (done) -> 
@@ -24,14 +27,14 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit, n
                 ->
             )
             should.exist GitAction.task
-            test done
+            done()
 
 
-    context 'init()', (it) -> 
+    context 'init()', -> 
 
         it 'performs the seed inititialize', (done) -> 
 
-            nezkit.seed.init = -> test done 
+            nezkit.seed.init = -> done()
             GitAction.configure( 
                 root: '.' 
                 ->
@@ -44,7 +47,7 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit, n
 
             nezkit.seed.init = -> 
                 arguments[0].should.equal GitAction.task
-                test done
+                done()
 
             GitAction.configure( 
                 root: '.' 
@@ -54,9 +57,9 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit, n
             ).init()
 
 
-    context 'clone()', (performs) ->
+    context 'clone()', ->
 
-        performs 'npm install in all nested modules', (done) ->
+        it 'npm install in all nested modules', (done) ->
 
             #
             # TODO: after proper expectations are possible
@@ -64,13 +67,13 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit, n
 
             # GitAction.npmInstall = true
             # nezkit.git.seed.prototype.clone = (callback) -> callback null 
-            # nezkit.npm.install = -> test done
+            # nezkit.npm.install = -> done()
             # GitAction.assign( root: '.' ).clone()
 
 
-        performs 'git clone of the seed repos', (done) ->
+        it 'git clone of the seed repos', (done) ->
 
-            nezkit.seed.prototype.clone = -> test done
+            nezkit.seed.prototype.clone = -> done()
             GitAction.configure( 
                 root: '.' 
                 ->
@@ -80,11 +83,11 @@ require('nez').realize 'GitAction', (GitAction, test, context, should, nezkit, n
             ).clone()
 
 
-    context 'status()', (shows) -> 
+    context 'status()', -> 
 
-        shows 'git status of the tree', (done) ->  
+        it 'git status of the tree', (done) ->  
 
-            nezkit.seed.prototype.status = -> test done 
+            nezkit.seed.prototype.status = -> done()
             GitAction.configure( 
                 root: '.' 
                 ->
