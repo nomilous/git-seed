@@ -2,6 +2,13 @@ gitseed    = require 'gitseed'
 fs         = require 'fs'
 GitSeed    = undefined
 
+#
+# no. - needs overhaul. 
+#     - do plugin as middleware
+#     - first release notice-0.0.11 and phrase
+#     - perhaps use phrase to flow control the git execs
+#
+
 module.exports = GitAction =
 
     gotDirectory: (directory) -> 
@@ -24,9 +31,11 @@ module.exports = GitAction =
 
     configure: (program, notice) ->
 
-        GitSeed = gitseed.create 
+        GitSeed = gitseed.create
 
             notice: notice
+
+
 
         # if (
 
@@ -40,40 +49,37 @@ module.exports = GitAction =
         # GitAction.task.promise.then onSuccess, onError, onNotify
 
 
-        # GitAction.root     = '.' 
-        # GitAction.message  = program.message
-        # plugin             = program.packageManager || 'npm'
+        GitSeed.message = program.message  # -m""
+        plugin          = program.packageManager || 'npm'
 
-        # try
+        try GitSeed.plugin = require "git-seed-#{plugin}"
+        catch error
+            notice.error 'missing plugin',
+                error: error
 
-        #     GitAction.plugin = require "git-seed-#{plugin}"
+            .then -> process.exit 1
 
-        # catch error
-
-        #     onNotify.info.bad 'missing plugin', error.toString()
-        #     process.exit 1
-
-        # return GitAction 
+        return GitAction 
 
 
     init: -> 
 
-        if typeof GitAction.task == 'undefined' 
-            throw new Error 'configure() was not called'
+        # if typeof GitAction.task == 'undefined' 
+        #     throw new Error 'configure() was not called'
 
-        GitAction.task.notify.info.normal 'start seed init', 
-            "recurse for git repositories in '#{ GitAction.root }'"
+        # GitAction.task.notify.info.normal 'start seed init', 
+        #     "recurse for git repositories in '#{ GitAction.root }'"
 
         
-        GitAction.error = ''
+        # GitAction.error = ''
 
-        unless GitAction.gotDirectory GitAction.root + '/.git'
+        # unless GitAction.gotDirectory GitAction.root + '/.git'
 
-            GitAction.task.notify.info.bad 'missing root repo', 
-                "no git reposititory in '#{ GitAction.root }'"
-            return
+        #     GitAction.task.notify.info.bad 'missing root repo', 
+        #         "no git reposititory in '#{ GitAction.root }'"
+        #     return
 
-        GitSeed.init GitAction.task, GitAction.root, GitAction.plugin
+        # GitSeed.init GitAction.task, GitAction.root, GitAction.plugin
 
 
     status: ->

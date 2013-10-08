@@ -48,14 +48,8 @@ program
     .description('Update the .git-seed control file')
     .action -> 
 
-        GitAction.configure(
-
-            program
-            success = -> console.log 'DONE', arguments
-            error   = -> console.log 'ERROR', arguments
-            notice
-
-        ).init arguments
+        console.log 1
+        GitAction.configure( program, notice ).init arguments
 
 program
     .command('status')

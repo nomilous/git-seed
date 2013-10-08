@@ -9,14 +9,38 @@ describe 'git_action', ->
 
     context 'configure()', -> 
 
+        beforeEach -> 
+            @create = gitseed.create
+
+        afterEach -> 
+            gitseed.create = @create
+
+
         it 'initializes gitseed with a notifier', (done) -> 
 
             gitseed.create = (opts) -> 
 
                 opts.notice.should.equal 'NOTIFIER'
                 done()
+                throw 'no further'
 
-            GitAction.configure {}, 'NOTIFIER'
+            try GitAction.configure {}, 'NOTIFIER'
+
+
+        it 'assigns message and plugin', (done) -> 
+
+            seed = {}
+            gitseed.create = (opts) -> 
+                return seed
+
+            GitAction.configure {
+
+                message: 'commit log message'
+                
+
+            }, {}
+
+            console.log seed
 
 
 
