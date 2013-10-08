@@ -1,6 +1,6 @@
 `sudo npm install git-seed -g`
 
-### Current version 0.0.7 (unstable)
+#### Current version 0.0.7 (unstable)
 
 git-seed
 ========

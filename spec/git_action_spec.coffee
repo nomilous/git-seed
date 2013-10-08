@@ -1,36 +1,26 @@
 should = require 'should'
 notice = require 'notice'
+GitAction = require '../lib/git_action'
+gitseed   = require 'gitseed'   
 
 describe 'git_action', -> 
 
-    #note = notice.create 'git-seed', (msg, next) -> 
+    note = notice.create 'git-seed'
 
-    context 'assign()', -> 
+    context 'configure()', -> 
 
-        it 'expects promise handlers', (done) -> 
+        it 'initializes gitseed with a notifier', (done) -> 
 
-            try 
+            gitseed.create = (opts) -> 
 
-                GitAction.configure( root: '.' )
-
-            catch error
-
-                error.should.match /requires promise handlers/
+                opts.notice.should.equal 'NOTIFIER'
                 done()
 
-
-        it 'promises a result', (done) -> 
-
-            GitAction.configure( 
-                root: '.'
-                -> 
-                ->
-            )
-            should.exist GitAction.task
-            done()
+            GitAction.configure {}, 'NOTIFIER'
 
 
-    context 'init()', -> 
+
+    xcontext 'init()', -> 
 
         it 'performs the seed inititialize', (done) -> 
 
@@ -57,7 +47,7 @@ describe 'git_action', ->
             ).init()
 
 
-    context 'clone()', ->
+    xcontext 'clone()', ->
 
         it 'npm install in all nested modules', (done) ->
 
@@ -83,7 +73,7 @@ describe 'git_action', ->
             ).clone()
 
 
-    context 'status()', -> 
+    xcontext 'status()', -> 
 
         it 'git status of the tree', (done) ->  
 

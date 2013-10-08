@@ -1,6 +1,6 @@
-GitSeed = require('nezkit').seed
-fs      = require 'fs'
-task    = require('when').defer
+gitseed    = require 'gitseed'
+fs         = require 'fs'
+GitSeed    = undefined
 
 module.exports = GitAction =
 
@@ -22,34 +22,38 @@ module.exports = GitAction =
     error: 'unknown or missing command'
 
 
-    configure: (program, onSuccess, onError, onNotify) ->
+    configure: (program, notice) ->
 
-        if (
+        GitSeed = gitseed.create 
 
-            typeof onSuccess == 'undefined' or 
-            typeof onError == 'undefined'
+            notice: notice
 
-        ) then throw new Error 'requires promise handlers'
+        # if (
 
-        GitAction.task = task()
-        GitAction.task.notify = onNotify
-        GitAction.task.promise.then onSuccess, onError, onNotify
+        #     typeof onSuccess == 'undefined' or 
+        #     typeof onError == 'undefined'
+
+        # ) then throw new Error 'requires promise handlers'
+
+        # GitAction.task = task()
+        # GitAction.task.notify = onNotify
+        # GitAction.task.promise.then onSuccess, onError, onNotify
 
 
-        GitAction.root     = '.' 
-        GitAction.message  = program.message
-        plugin             = program.packageManager || 'npm'
+        # GitAction.root     = '.' 
+        # GitAction.message  = program.message
+        # plugin             = program.packageManager || 'npm'
 
-        try
+        # try
 
-            GitAction.plugin = require "git-seed-#{plugin}"
+        #     GitAction.plugin = require "git-seed-#{plugin}"
 
-        catch error
+        # catch error
 
-            onNotify.info.bad 'missing plugin', error.toString()
-            process.exit 1
+        #     onNotify.info.bad 'missing plugin', error.toString()
+        #     process.exit 1
 
-        return GitAction 
+        # return GitAction 
 
 
     init: -> 
