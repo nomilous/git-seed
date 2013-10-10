@@ -12,7 +12,7 @@ Todo
 
 * Switch to notice-0.0.11
 * Inform when switching submodule from git clone to subsequently published npm install (npm wont write into a node_modules folder already populated by git repo clone and vice-versa, best to leave the delete up to the user)
-* Inform on multiple nested same submodule on different revision. (This happens when the same unreleased node_module is a doublenested dependency in more than one nested submodule)
+* Inform on multiple nested same submodule on different revision. (This happens when the same unreleased node_module is a doublenested dependency in more than one nested submodule) or see [tip](#got-the-same-module-nested-again-deeper-inside-another)
 
 Usage
 =====
