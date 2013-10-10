@@ -181,8 +181,9 @@ Tip
 cd node_modules/
 rm -fr notice/
 ln -s phrase/node_modules/notice
-
+cd ../
 git seed status
+
  info (start seed status) - for all git repositories in './.git-seed'
  info (skip) - no changes .
  info (unpushed changes) - ./node_modules/notice
@@ -198,6 +199,19 @@ nothing to commit (working directory clean)
 #
 nothing to commit (working directory clean)
 
+ info (seed status) - success
+ info (seed status results) - 
+
+ ##
+ cd node_modules/notice
+ git push origin develop
+ cd -
+ git seed status
+ info (start seed status) - for all git repositories in './.git-seed'
+ info (skip) - no changes .
+ info (skip) - no changes ./node_modules/notice
+ info (skip) - no changes ./node_modules/phrase
+ info (skip) - no changes ./node_modules/phrase/node_modules/notice
  info (seed status) - success
  info (seed status results) - 
 
