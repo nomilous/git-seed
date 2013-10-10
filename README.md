@@ -171,3 +171,35 @@ EVENT [seed install] - success
 
 
 ```
+
+Tip
+---
+
+### Got the same module nested again deeper inside another?
+
+```bash
+cd node_modules/
+rm -fr notice/
+ln -s phrase/node_modules/notice
+
+git seed status
+ info (start seed status) - for all git repositories in './.git-seed'
+ info (skip) - no changes .
+ info (unpushed changes) - ./node_modules/notice
+# On branch develop
+# Your branch is ahead of 'origin/develop' by 47 commits.     <----------------SAME
+#
+nothing to commit (working directory clean)
+
+ info (skip) - no changes ./node_modules/phrase
+ info (unpushed changes) - ./node_modules/phrase/node_modules/notice
+# On branch develop
+# Your branch is ahead of 'origin/develop' by 47 commits.     <----------------SAME
+#
+nothing to commit (working directory clean)
+
+ info (seed status) - success
+ info (seed status results) - 
+
+
+```
